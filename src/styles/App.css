@@ -1,3 +1,14 @@
+body {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 16px;
+}
+
+.call-for-action-btn {
+  font-family: 'Noto Sans', 'sans-serif';
+  font-size: 13px;
+  border-radius: 2px;
+}
+
 .App {
   text-align: center;
 }
