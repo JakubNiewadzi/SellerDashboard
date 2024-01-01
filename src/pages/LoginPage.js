@@ -4,26 +4,26 @@ import {authenticate} from "../services/authService";
 import {login, logout} from "../services/state/slices/authSlice";
 import {Button, Form, FormGroup, Input, Label} from "reactstrap";
 import {useNavigate} from "react-router-dom";
+import {useGlobalContext} from "../services/globalContext";
 
 export const LoginPage = () => {
     const dispatch = useDispatch()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate();
+    const {isDark} = useGlobalContext();
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const authResult = authenticate(username, password)
         if (authResult) {
-            dispatch(login(authResult.user, authResult.account))
+            dispatch(login(authResult))
             navigate("/")
-        } else {
-            dispatch(logout())
         }
     }
     return (
-        <div className='page-container'>
-            <Form className='form' onSubmit={(e) => handleSubmit(e)}>
+        <div className={`app ${isDark ? 'dark' : 'light'} page-container`}>
+            <Form className={`form ${isDark ? 'dark' : 'light'}`} onSubmit={(e) => handleSubmit(e)}>
                 <FormGroup>
                     <Label for='username'>
                         Username
@@ -52,7 +52,7 @@ export const LoginPage = () => {
                     <Button className='call-for-action-btn'
                             color='primary'
                             type='submit'
-                    style={{width: '100%', marginTop: '15px'}}>Submit</Button>
+                            style={{width: '100%', marginTop: '15px'}}>Submit</Button>
                 </FormGroup>
             </Form>
         </div>

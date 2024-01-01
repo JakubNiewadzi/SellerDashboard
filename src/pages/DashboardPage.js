@@ -1,9 +1,15 @@
 import {OpinionsWidget} from "../widgets/OpinionsWidget";
+import {SidebarComponent} from "../components/SidebarComponent";
+import {useGlobalContext} from "../services/globalContext";
 
 export const DashboardPage = () => {
-    return <>
+    const {isDark} = useGlobalContext()
+
+    return <div className={`app ${ isDark ?  'dark' : 'light'}`}>
+        <SidebarComponent/>
+        <div className='Dashboard-page'>
         <OpinionsWidget/>
-        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada
             bibendum arcu vitae. Rutrum tellus pellentesque eu tincidunt tortor aliquam
             nulla facilisi cras. Nulla pharetra diam sit amet. Sed ullamcorper morbi
@@ -15,5 +21,5 @@ export const DashboardPage = () => {
             Viverra aliquet eget sit amet tellus. Pulvinar pellentesque habitant morbi tristique
             senectus. Vitae tortor condimentum lacinia quis vel.
         </div>
-    </>
+    </div>
 }

@@ -7,10 +7,14 @@ import {OrdersPage} from "./pages/OrdersPage";
 import {ProductsPage} from "./pages/ProductsPage";
 import {QualityOfSellerPage} from "./pages/QualityOfSellerPage";
 import {ProtectedRoute} from "./components/routes/ProtectedRoute";
+import {IconContext} from "react-icons";
+import {useGlobalContext} from "./services/globalContext";
 
 function App() {
+    const {isDark} = useGlobalContext();
+    const iconColor = isDark ? '#ffffff' : '#001d1a'
     return (
-        <>
+        <IconContext.Provider value={{size: '2em', color: iconColor}}>
             <Routes>
                 <Route path='/login' element={<LoginPage/>}/>
                 <Route element={<ProtectedRoute/>}>
@@ -21,7 +25,7 @@ function App() {
                     <Route path='/qualityofseller' element={<QualityOfSellerPage/>}/>
                 </Route>
             </Routes>
-        </>
+        </IconContext.Provider>
     );
 }
 

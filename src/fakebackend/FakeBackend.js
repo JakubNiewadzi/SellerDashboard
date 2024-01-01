@@ -1,10 +1,12 @@
 export const users = {
     "Marek": {
         password: "marek12",
-        accounts: ["konto1", "konto2"],
+        accounts: ["Konto1", "Konto2"],
     },
     "Andrzej": {
         password: "andrzej21",
-        accounts: ["konto1", "konto2"]
+        accounts: ["Konto1", "Konto2"]
     }
 }
+
+export const languages = ["Polski", "English"]

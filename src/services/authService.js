@@ -4,7 +4,7 @@ export const authenticate = (username, password) => {
     const user = users[username]
     if (user && user.password===password){
         const account = user.accounts[0]
-        return {user, account}
+        return {username, account}
     }
     return null
 }
