@@ -1,17 +1,16 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {authenticate} from "../services/authService";
-import {login, logout} from "../services/state/slices/authSlice";
+import {login} from "../services/state/slices/authSlice";
 import {Button, Form, FormGroup, Input, Label} from "reactstrap";
 import {useNavigate} from "react-router-dom";
-import {useGlobalContext} from "../services/globalContext";
 
 export const LoginPage = () => {
     const dispatch = useDispatch()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate();
-    const {isDark} = useGlobalContext();
+    const isDark = useSelector(state => state.context.isDark);
 
     const handleSubmit = (e) => {
         e.preventDefault()

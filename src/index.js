@@ -10,17 +10,14 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {store} from "./services/state/Store";
-import {ContextProvider} from "./services/globalContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <ContextProvider>
-                <Provider store={store}>
-                    <App/>
-                </Provider>
-            </ContextProvider>
+            <Provider store={store}>
+                <App/>
+            </Provider>
         </BrowserRouter>
     </React.StrictMode>
 );

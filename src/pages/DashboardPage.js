@@ -1,9 +1,9 @@
 import {OpinionsWidget} from "../widgets/OpinionsWidget";
 import {SidebarComponent} from "../components/SidebarComponent";
-import {useGlobalContext} from "../services/globalContext";
+import {useSelector} from "react-redux";
 
 export const DashboardPage = () => {
-    const {isDark} = useGlobalContext()
+    const isDark = useSelector(state => state.context.isDark)
 
     return <div className={`app ${ isDark ?  'dark' : 'light'}`}>
         <SidebarComponent/>

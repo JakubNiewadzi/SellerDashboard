@@ -8,10 +8,10 @@ import {ProductsPage} from "./pages/ProductsPage";
 import {QualityOfSellerPage} from "./pages/QualityOfSellerPage";
 import {ProtectedRoute} from "./components/routes/ProtectedRoute";
 import {IconContext} from "react-icons";
-import {useGlobalContext} from "./services/globalContext";
+import {useSelector} from "react-redux";
 
 function App() {
-    const {isDark} = useGlobalContext();
+    const isDark = useSelector(state => state.context.isDark);
     const iconColor = isDark ? '#ffffff' : '#001d1a'
     return (
         <IconContext.Provider value={{size: '2em', color: iconColor}}>

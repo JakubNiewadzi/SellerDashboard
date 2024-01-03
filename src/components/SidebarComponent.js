@@ -1,6 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
 import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle, FormGroup, Input} from "reactstrap";
-import {useGlobalContext} from "../services/globalContext";
 import {FaUserCircle} from "react-icons/fa";
 import {CiDark, CiLight} from "react-icons/ci";
 import {MdDashboard, MdLogout} from "react-icons/md";
@@ -9,14 +8,16 @@ import {PiUserSwitchBold} from "react-icons/pi";
 import {changeAccount, logout} from "../services/state/slices/authSlice";
 import {IoLanguage} from "react-icons/io5";
 import {languages, users} from "../fakebackend/FakeBackend";
+import {changeTheme, setLanguage} from "../services/state/slices/contextSlice";
 
 
 export const SidebarComponent = () => {
-    const {isDark, toggleTheme, language, changeLanguage } = useGlobalContext()
     const currentAccount = useSelector(state => state.auth.currentAccount)
-    const dispatch = useDispatch()
+    const isDark = useSelector(state => state.context.isDark)
+    const language = useSelector(state => state.context.language)
     const currentUser = useSelector(state => state.auth.user)
     const accounts = users[currentUser].accounts
+    const dispatch = useDispatch()
 
     const UserInfo = () => {
         return <>
@@ -35,13 +36,11 @@ export const SidebarComponent = () => {
                 <Input
                     type='switch'
                     checked={isDark}
-                    onClick={() => toggleTheme()}
+                    onClick={() => dispatch(changeTheme())}
                     color='success'/>
             </FormGroup>
             <CiDark/>
         </div>
-
-
     }
 
     const SidebarElementDropdown = ({text, icon, items, type}) => {
@@ -51,18 +50,9 @@ export const SidebarComponent = () => {
             setDropdownOpen((prevState) => !prevState)
         };
 
-        const handleAccountSelect = (account) =>{
-            console.log(account)
-            dispatch(changeAccount(account))
-        }
-
-        const handleLanguageSelect = (language) => {
-            changeLanguage(language)
-        }
-
         const itemsList = items.map(item => {
             return <DropdownItem value={item} onClick={type === 'account' ?
-                () => handleAccountSelect(item) : () => handleLanguageSelect(item)}>{item}</DropdownItem>
+                () => dispatch(changeAccount(item)) : () => dispatch(setLanguage(item))}>{item}</DropdownItem>
         })
 
         return (<Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
@@ -88,17 +78,12 @@ export const SidebarComponent = () => {
             </div>);
     }
 
-    const handleLogout = () => {
-        dispatch(logout())
-    }
-
-    console.log(currentAccount)
     return <div className={`Sidebar ${isDark ? 'dark' : 'light'}`}>
         <UserInfo/>
         <SidebarElement text='Dashboard' icon={<MdDashboard/>}/>
         <SidebarElementDropdown text={currentAccount} icon={<PiUserSwitchBold/>} items={accounts} type='account'/>
         <SidebarElementDropdown text={language} icon={<IoLanguage/>} items={languages} type='language'/>
-        <SidebarElement text='Wyloguj' icon={<MdLogout/>} onClick={() => handleLogout}/>
+        <SidebarElement text='Wyloguj' icon={<MdLogout/>} onClick={() => dispatch(logout())}/>
         <SwitchThemeButton/>
     </div>
 
