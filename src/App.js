@@ -9,10 +9,11 @@ import {QualityOfSellerPage} from "./pages/QualityOfSellerPage";
 import {ProtectedRoute} from "./components/routes/ProtectedRoute";
 import {IconContext} from "react-icons";
 import {useSelector} from "react-redux";
+import {SidebarComponent} from "./components/SidebarComponent";
 
 function App() {
     const isDark = useSelector(state => state.context.isDark);
-    const iconColor = isDark ? '#ffffff' : '#001d1a'
+    const iconColor = isDark ? '#c1c1c1' : '#001d1a'
     return (
         <IconContext.Provider value={{size: '2em', color: iconColor}}>
             <Routes>

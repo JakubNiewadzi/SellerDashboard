@@ -3,11 +3,7 @@ import {SidebarComponent} from "../components/SidebarComponent";
 import {useSelector} from "react-redux";
 
 export const DashboardPage = () => {
-    const isDark = useSelector(state => state.context.isDark)
-
-    return <div className={`app ${ isDark ?  'dark' : 'light'}`}>
-        <SidebarComponent/>
-        <div className='Dashboard-page'>
+    return <div className='Dashboard-page'>
         <OpinionsWidget/>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada
@@ -21,5 +17,4 @@ export const DashboardPage = () => {
             Viverra aliquet eget sit amet tellus. Pulvinar pellentesque habitant morbi tristique
             senectus. Vitae tortor condimentum lacinia quis vel.
         </div>
-    </div>
 }

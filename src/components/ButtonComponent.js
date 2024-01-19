@@ -1,11 +1,12 @@
 import {Button} from "reactstrap";
-import button from "bootstrap/js/src/button";
+import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
-export const ButtonComponent = (props) => {
-
-    return <Button className='call-for-action-btn'
-                   color={props.color}
-                   onClick={props.onClick}>
-        {props.text}
+export const ButtonComponent = ({children, to}) => {
+    const isDark = useSelector(state => state.context.isDark)
+    return <Button className={`redirect-button ${isDark ? 'dark' : 'light'}`}
+                   color='primary'
+    tag={Link} to={to}>
+        {children}
     </Button>
 }

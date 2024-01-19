@@ -1,0 +1,15 @@
+{
+  "username": "Nazwa użytkownika",
+  "password": "Hasło",
+  "usernamePh": "Twoja nazwa użytkownika",
+  "passwordPh": "Twoje hasło",
+  "signin": "Zaloguj się",
+  "dashboard": "Panel",
+  "logout": "Wyloguj się",
+  "positive": "Pozytywne",
+  "negative": "Negatywne",
+  "all": "Wszystkie",
+  "opinions": "Opinie kupujących",
+  "moreOpinions": "Więcej opinii",
+  "noOpinionsFound": "Nie znaleziono żadnych opinii"
+}

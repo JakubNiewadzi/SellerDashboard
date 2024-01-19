@@ -11,6 +11,7 @@ export const LoginPage = () => {
     const [password, setPassword] = useState('')
     const navigate = useNavigate();
     const isDark = useSelector(state => state.context.isDark);
+    const translation = useSelector(state => state.context.translation);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -25,33 +26,37 @@ export const LoginPage = () => {
             <Form className={`form ${isDark ? 'dark' : 'light'}`} onSubmit={(e) => handleSubmit(e)}>
                 <FormGroup>
                     <Label for='username'>
-                        Username
+                        {translation['username']}
                     </Label>
                     <Input
                         id='username'
                         name='username'
-                        placeholder='Your username'
+                        placeholder={translation['usernamePh']}
                         type='text'
                         onChange={(e) => setUsername(e.target.value)}
                     />
                 </FormGroup>
                 <FormGroup>
                     <Label for='password'>
-                        Password
+                        {translation['password']}
                     </Label>
                     <Input
                         id='password'
                         name='password'
-                        placeholder='Your password'
+                        placeholder={translation['passwordPh']}
                         type='password'
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Button className='call-for-action-btn'
-                            color='primary'
+                    <Button color='primary'
                             type='submit'
-                            style={{width: '100%', marginTop: '15px'}}>Submit</Button>
+                            style={{
+                                width: '100%',
+                                marginTop: '15px',
+                                borderRadius: '2px',
+                                color: isDark ? '#d2d2d2' : 'white'
+                            }}>{translation['signin']}</Button>
                 </FormGroup>
             </Form>
         </div>

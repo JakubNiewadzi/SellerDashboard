@@ -1,9 +1,11 @@
 import {languages} from "../../../fakebackend/FakeBackend";
 import {createSlice} from "@reduxjs/toolkit";
+import Polski from '../../../languages/Polski.json';
 
 const initialState = {
     language: languages[0],
-    isDark: false
+    isDark: false,
+    translation: Polski
 }
 
 const contextSlice = createSlice({
@@ -14,7 +16,8 @@ const contextSlice = createSlice({
             state.isDark = !state.isDark
         },
         setLanguage: (state, action) => {
-            state.language = action.payload
+            state.language = action.payload.language
+            state.translation = action.payload.translation
         }
     }
 })

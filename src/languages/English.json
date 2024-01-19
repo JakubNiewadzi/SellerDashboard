@@ -1,0 +1,15 @@
+{
+  "username": "Username",
+  "password": "Password",
+  "usernamePh": "Your username",
+  "passwordPh": "Your password",
+  "signin": "Sign in",
+  "dashboard": "Dashboard",
+  "logout": "Log out",
+  "positive": "Positive",
+  "negative": "Negative",
+  "all": "All",
+  "opinions": "Customer opinions",
+  "moreOpinions": "More opinions",
+  "noOpinionsFound": "No opinions could have been found"
+}

@@ -9,13 +9,15 @@ import {changeAccount, logout} from "../services/state/slices/authSlice";
 import {IoLanguage} from "react-icons/io5";
 import {languages, users} from "../fakebackend/FakeBackend";
 import {changeTheme, setLanguage} from "../services/state/slices/contextSlice";
-
+import Polski from '../languages/Polski.json';
+import English from '../languages/English.json';
 
 export const SidebarComponent = () => {
     const currentAccount = useSelector(state => state.auth.currentAccount)
     const isDark = useSelector(state => state.context.isDark)
     const language = useSelector(state => state.context.language)
     const currentUser = useSelector(state => state.auth.user)
+    const translation = useSelector(state => state.context.translation)
     const accounts = users[currentUser].accounts
     const dispatch = useDispatch()
 
@@ -49,41 +51,48 @@ export const SidebarComponent = () => {
         const toggleDropdown = () => {
             setDropdownOpen((prevState) => !prevState)
         };
+        const changeLanguage = (language) => {
+            if(language==='English'){
+                dispatch(setLanguage({language: language, translation: English}))
+            }else{
+                dispatch(setLanguage({language: language, translation: Polski}))
+            }
+        }
 
         const itemsList = items.map(item => {
             return <DropdownItem value={item} onClick={type === 'account' ?
-                () => dispatch(changeAccount(item)) : () => dispatch(setLanguage(item))}>{item}</DropdownItem>
+                () => dispatch(changeAccount(item)) : () => changeLanguage(item)}>{item}</DropdownItem>
         })
 
         return (<Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
-                <DropdownToggle tag="span" data-toggle="dropdown" aria-expanded={dropdownOpen}
-                                className='SidebarElement'>
-                    {icon}
-                    <span style={{marginLeft: '15px'}}>
+            <DropdownToggle tag="span" data-toggle="dropdown" aria-expanded={dropdownOpen}
+                            className='SidebarElement'>
+                {icon}
+                <span style={{marginLeft: '15px'}}>
                         {text}
                         </span>
-                </DropdownToggle>
-                <DropdownMenu>
-                    {itemsList}
-                </DropdownMenu>
-            </Dropdown>);
+            </DropdownToggle>
+            <DropdownMenu>
+                {itemsList}
+            </DropdownMenu>
+        </Dropdown>);
     }
 
     const SidebarElement = ({text, icon, onClick}) => {
         return (<div className='SidebarElement' onClick={onClick}>
-                {icon}
-                <span style={{marginLeft: '15px'}}>
+            {icon}
+            <span style={{marginLeft: '15px'}}>
                     {text}
                 </span>
-            </div>);
+        </div>);
     }
 
     return <div className={`Sidebar ${isDark ? 'dark' : 'light'}`}>
         <UserInfo/>
-        <SidebarElement text='Dashboard' icon={<MdDashboard/>}/>
+        <SidebarElement text={translation['dashboard']} icon={<MdDashboard/>}/>
         <SidebarElementDropdown text={currentAccount} icon={<PiUserSwitchBold/>} items={accounts} type='account'/>
         <SidebarElementDropdown text={language} icon={<IoLanguage/>} items={languages} type='language'/>
-        <SidebarElement text='Wyloguj' icon={<MdLogout/>} onClick={() => dispatch(logout())}/>
+        <SidebarElement text={translation['logout']} icon={<MdLogout/>} onClick={() => dispatch(logout())}/>
         <SwitchThemeButton/>
     </div>
 
