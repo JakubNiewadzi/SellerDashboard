@@ -33,3 +33,18 @@ export const opinions = [
     {"from": "User19", "opinion": "Impressive quality!", "isPositive": false, "date": "2022-02-08T09:20:00Z", "user": {"username": "Andrzej", "account": "Konto2"}},
     {"from": "User20", "opinion": "Not recommended.", "isPositive": false, "date": "2022-02-09T11:45:00Z", "user": {"username": "Marek", "account": "Konto2"}},
 ]
+
+export const orders = [
+    {"type": "notPaid", "count": 43, "user": {"username": "Marek", "account": "Konto1"}},
+    {"type": "notSent", "count": 12, "user": {"username": "Marek", "account": "Konto1"}},
+    {"type": "returned", "count": 1, "user": {"username": "Marek", "account": "Konto1"}},
+    {"type": "notPaid", "count": 48, "user": {"username": "Marek", "account": "Konto2"}},
+    {"type": "notSent", "count": 54, "user": {"username": "Marek", "account": "Konto2"}},
+    {"type": "returned", "count": 12, "user": {"username": "Marek", "account": "Konto2"}},
+    {"type": "notPaid", "count": 62, "user": {"username": "Andrzej", "account": "Konto1"}},
+    {"type": "notSent", "count": 8, "user": {"username": "Andrzej", "account": "Konto1"}},
+    {"type": "returned", "count": 3, "user": {"username": "Andrzej", "account": "Konto1"}},
+    {"type": "notPaid", "count": 76, "user": {"username": "Andrzej", "account": "Konto2"}},
+    {"type": "notSent", "count": 31, "user": {"username": "Andrzej", "account": "Konto2"}},
+    {"type": "returned", "count": 13, "user": {"username": "Andrzej", "account": "Konto2"}}
+]

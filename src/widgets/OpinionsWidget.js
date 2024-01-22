@@ -64,7 +64,7 @@ export const OpinionsWidget = () => {
         </div> : <div></div>
     }
 
-    return <div className={`OpinionsWidget ${isDark ? 'dark' : 'light'}`}>
+    return <div className={`Widget ${isDark ? 'dark' : 'light'}`}>
         <div className='header-container'>
             <div>{translation['opinions']}</div>
             <RadioButtonGroup/>
@@ -74,15 +74,7 @@ export const OpinionsWidget = () => {
                                        opinion={filteredOpinion.opinion}
                                        from={filteredOpinion.from}
                                        isPositive={filteredOpinion.isPositive}/>
-        })  : <span style={{
-            display: 'flex',
-            flexDirection: 'column',
-            fontSize: '13px',
-            fontWeight: 'normal',
-            fontFamily: "Noto Sans",
-            marginTop: '10px',
-            alignItems: 'center',
-        }}>{translation['noOpinionsFound']}</span>}
+        })  : <span className='no-content-text'>{translation['noOpinionsFound']}</span>}
         {opinions.length !== 0 ?<ButtonComponent tag={NavLink} to='/opinions'>{translation['moreOpinions']}</ButtonComponent> : ""}
     </div>;
 }

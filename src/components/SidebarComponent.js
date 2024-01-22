@@ -11,6 +11,7 @@ import {languages, users} from "../fakebackend/FakeBackend";
 import {changeTheme, setLanguage} from "../services/state/slices/contextSlice";
 import Polski from '../languages/Polski.json';
 import English from '../languages/English.json';
+import {NavLink, useNavigate} from "react-router-dom";
 
 export const SidebarComponent = () => {
     const currentAccount = useSelector(state => state.auth.currentAccount)
@@ -20,6 +21,7 @@ export const SidebarComponent = () => {
     const translation = useSelector(state => state.context.translation)
     const accounts = users[currentUser].accounts
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const UserInfo = () => {
         return <>
@@ -89,7 +91,7 @@ export const SidebarComponent = () => {
 
     return <div className={`Sidebar ${isDark ? 'dark' : 'light'}`}>
         <UserInfo/>
-        <SidebarElement text={translation['dashboard']} icon={<MdDashboard/>}/>
+        <SidebarElement onClick={() => navigate("/")} text={translation['dashboard']} icon={<MdDashboard/>}/>
         <SidebarElementDropdown text={currentAccount} icon={<PiUserSwitchBold/>} items={accounts} type='account'/>
         <SidebarElementDropdown text={language} icon={<IoLanguage/>} items={languages} type='language'/>
         <SidebarElement text={translation['logout']} icon={<MdLogout/>} onClick={() => dispatch(logout())}/>

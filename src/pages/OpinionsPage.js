@@ -1,1 +1,1 @@
-export const OpinionsPage = () => 'Opinie'
+export const OpinionsPage = () => 'Opinie :>'

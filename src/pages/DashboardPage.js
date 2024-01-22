@@ -1,10 +1,12 @@
 import {OpinionsWidget} from "../widgets/OpinionsWidget";
 import {SidebarComponent} from "../components/SidebarComponent";
 import {useSelector} from "react-redux";
+import {OrdersWidget} from "../widgets/OrdersWidget";
 
 export const DashboardPage = () => {
     return <div className='Dashboard-page'>
         <OpinionsWidget/>
+        <OrdersWidget/>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada
             bibendum arcu vitae. Rutrum tellus pellentesque eu tincidunt tortor aliquam

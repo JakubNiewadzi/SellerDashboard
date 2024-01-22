@@ -31,8 +31,10 @@
 }
 
 .Dashboard-page {
-  flex: 1;
-  padding: 20px;
+  flex-wrap: wrap;
+  display: flex;
+  flex:1;
+  align-items: baseline;
 }
 
 .Sidebar {
@@ -42,6 +44,7 @@
   height: 100%;
   width: 220px;
   background-color: white;
+  margin-right: 20px;
   color: var(--text-light)
 }
 
@@ -129,7 +132,7 @@
   color: var(--text-dark)
 }
 
-.OpinionsWidget {
+.Widget {
   font-weight: bold;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   flex-direction: column;
@@ -137,14 +140,17 @@
   width: 470px;
   background-color: white;
   padding: 25px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.OpinionsWidget.dark {
+.Widget.dark {
   background-color: #0e0e0e;
   color: var(--text-dark)
 }
 
-.OpinionComponent {
+.WidgetElementComponent {
   background-color: #09a3c6;
   margin-top: 15px;
   padding: 8px;
@@ -154,7 +160,7 @@
   border-radius: 2px;
 }
 
-.OpinionComponent.dark {
+.WidgetElementComponent.dark {
   background-color: #001d1a;
 }
 
@@ -187,4 +193,24 @@
 
 .redirect-button.dark {
   color: var(--text-dark);
+}
+
+.no-content-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  font-weight: normal;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.order-type-container {
+  display: flex;
+  align-items: center;
+}
+
+.order-count-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }

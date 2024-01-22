@@ -11,5 +11,9 @@
   "all": "All",
   "opinions": "Customer opinions",
   "moreOpinions": "More opinions",
-  "noOpinionsFound": "No opinions could have been found"
+  "noOpinionsFound": "No opinions could have been found",
+  "orders": "Orders",
+  "notPaid": "Not paid",
+  "notSent": "Not sent",
+  "returned": "Returned"
 }

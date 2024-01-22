@@ -11,5 +11,9 @@
   "all": "Wszystkie",
   "opinions": "Opinie kupujących",
   "moreOpinions": "Więcej opinii",
-  "noOpinionsFound": "Nie znaleziono żadnych opinii"
+  "noOpinionsFound": "Nie znaleziono żadnych opinii",
+  "orders": "Zamówienia",
+  "notPaid": "Nieopłacone",
+  "notSent": "Niewysłane",
+  "returned": "Zwrócone"
 }
