@@ -1,12 +1,14 @@
-import {OpinionsWidget} from "../widgets/OpinionsWidget";
+import {OpinionsWidget} from "../widgets/opinions/OpinionsWidget";
 import {SidebarComponent} from "../components/SidebarComponent";
 import {useSelector} from "react-redux";
-import {OrdersWidget} from "../widgets/OrdersWidget";
+import {OrdersWidget} from "../widgets/orders/OrdersWidget";
+import { QualityWidget } from "../widgets/QualityWidget";
 
 export const DashboardPage = () => {
-    return <div className='Dashboard-page'>
+    return <div className='Dashboard-page {!isDarkTheme ? "light" : "dark"}'>
         <OpinionsWidget/>
         <OrdersWidget/>
+        <QualityWidget/>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada
             bibendum arcu vitae. Rutrum tellus pellentesque eu tincidunt tortor aliquam

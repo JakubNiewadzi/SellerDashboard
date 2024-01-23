@@ -1,0 +1,31 @@
+@function generateHoverColor($baseColor, $frac) {
+    @return mix($baseColor, if($frac > 0, white, black), abs($frac));
+}
+
+@mixin themeBackgroundWithHover($light, $dark) {
+    background-color: $light;
+
+    &:hover {
+        background-color: generateHoverColor($light, -90%);
+    }
+
+    .dark & {
+        background-color: $dark;
+
+        &:hover {
+            background-color: generateHoverColor($dark, 90%);
+        }
+    }
+}
+
+$primary-light: #06778D;
+$primary-dark: #8b8d06;
+
+$success-light: #001d1a;
+$success-dark: #2ff7e3;
+
+$widget-light: #ff4a9f;
+$widget-dark: rgb(209, 164, 39);
+
+$widget-pane-light: #0ba9c9;
+$widget-pane-dark: #5ad421;

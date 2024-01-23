@@ -1,0 +1,49 @@
+@import './../../styles/colors.scss';
+
+.std-button {
+    //common
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+
+    color: white;
+    .dark & {
+        color: var(--text-dark);
+    }
+
+
+    //sizes
+    &.large {
+        width: 100%;
+        height: 70px;
+    }
+
+    &.tiny {
+        width: 80px;
+        height: 25px;
+        font-family: 'Noto Sans', 'sans-serif';
+        font-size: 13px;
+    }
+
+
+    //types
+    &.primary {
+        @include themeBackgroundWithHover($primary-light, $primary-dark);
+        // background-color: $primary-light;
+        // &:hover {background-color: $primary-light-hover;}
+        // .dark & {
+        //     background-color: $primary-dark;
+        //     &:hover {background-color: $primary-dark-hover;}
+        // }
+    }
+    &.success {
+        @include themeBackgroundWithHover($success-light, $success-dark);
+        // background-color: $success-light;
+        // &:hover {background-color: $success-light-hover;}
+        // .dark & {
+        //     background-color: $success-dark;
+        //     &:hover {background-color: $success-dark-hover;}
+        // }
+    }
+}
