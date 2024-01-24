@@ -15,5 +15,10 @@
   "orders": "Orders",
   "notPaid": "Not paid",
   "notSent": "Not sent",
-  "returned": "Returned"
+  "returned": "Returned",
+  "quality_widget": {
+    "title": "En~Jakość sprzedaży",
+    "worst_aspects": "En~Aspekty z najgorszym wynikiem",
+    "button": "En~Jakość sprzedaży"
+  }
 }

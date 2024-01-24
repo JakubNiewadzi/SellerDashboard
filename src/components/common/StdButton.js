@@ -2,16 +2,18 @@ import React from 'react';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-export const StdButtonAny = ({ children, color = "primary", size = "tiny", ...props }) => {
-    return <Button tag={Link} {...props} className={`std-button ${color} ${size}`}>
-        {children}
-    </Button>;
+export const StdButtonAny = ({ children, className, color = "primary", size = "tiny", ...props }) => {
+    return <Button
+        tag={Link}
+        className={`std-button ${color} ${size} ${className || ''}`}
+        {...props}
+    >{children}</Button>;
 };
 
 export const StdButtonLarge = ({ children, ...props }) => {
-    return <StdButtonAny {...props} size="large">{children}</StdButtonAny>;
+    return <StdButtonAny size="large" {...props}>{children}</StdButtonAny>;
 };
 
 export const StdButtonTiny = ({ children, ...props }) => {
-    return <StdButtonAny {...props} size="tiny">{children}</StdButtonAny>;
+    return <StdButtonAny size="tiny" {...props}>{children}</StdButtonAny>;
 };

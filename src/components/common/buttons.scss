@@ -30,20 +30,8 @@
     //types
     &.primary {
         @include themeBackgroundWithHover($primary-light, $primary-dark);
-        // background-color: $primary-light;
-        // &:hover {background-color: $primary-light-hover;}
-        // .dark & {
-        //     background-color: $primary-dark;
-        //     &:hover {background-color: $primary-dark-hover;}
-        // }
     }
     &.success {
         @include themeBackgroundWithHover($success-light, $success-dark);
-        // background-color: $success-light;
-        // &:hover {background-color: $success-light-hover;}
-        // .dark & {
-        //     background-color: $success-dark;
-        //     &:hover {background-color: $success-dark-hover;}
-        // }
     }
 }

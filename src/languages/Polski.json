@@ -15,5 +15,13 @@
   "orders": "Zamówienia",
   "notPaid": "Nieopłacone",
   "notSent": "Niewysłane",
-  "returned": "Zwrócone"
+  "returned": "Zwrócone",
+  "qualityWidget": {
+    "mainTitle": "Jakość sprzedaży",
+    "cumulativeGradeTitle": "Jakość sprzedaży",
+    "worstAspectsTitle": "Aspekty z najgorszym wynikiem",
+    "gradesPresentButtonLabel": "Jakość sprzedaży",
+    "gradesNotPresentButtonLabel": "Wystaw coś na sell",
+    "gradesNotPresentMessage": "Nic nie sprzedałeś!!"
+  }
 }

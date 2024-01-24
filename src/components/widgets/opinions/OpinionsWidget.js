@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { opinions } from "../../fakebackend/FakeBackend";
+import { opinions } from "../../../fakebackend/FakeBackend";
 import { NavLink } from "react-router-dom";
-import { WidgetComponent } from "../../components/widget/WidgetComponent";
-import { StdButtonLarge, StdButtonTiny } from "../../components/common/StdButton";
-import { ColumnMediumGappedList, RowTinyGappedList } from "../../components/common/LinearGappedList";
+import { WidgetComponent } from "../../widget/WidgetComponent";
+import { StdButtonLarge, StdButtonTiny } from "../../common/StdButton";
+import { ColumnMediumGappedList, RowTinyGappedList } from "../../common/LinearGappedList";
 import { OpinionPane } from "./OpinionPane";
 
 export const OpinionsWidget = () => {
