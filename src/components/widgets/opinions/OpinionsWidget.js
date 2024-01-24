@@ -7,7 +7,7 @@ import { ColumnMediumGappedList, RowTinyGappedList } from "../../common/LinearGa
 import { OpinionPane } from "./OpinionPane";
 import { useDispatch } from 'react-redux';
 import { updateOpinionsInfo } from "services/state/slices/opinionsSlice";
-import { OPINIONS_ALL, OPINIONS_POSITIVE, OPINIONS_NEGATIVE } from "fakebackend/FakeBackend2";
+import { OPINIONS_ALL, OPINIONS_POSITIVE, OPINIONS_NEGATIVE } from "fakebackend/FakeBackend";
 
 export const OpinionsWidget = () => {
     const [clickedButton, setClickedButton] = useState(OPINIONS_ALL);

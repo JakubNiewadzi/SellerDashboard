@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getOrdersStatistics } from "fakebackend/FakeBackend2";
+import { getOrdersStatistics } from "fakebackend/FakeBackend";
 
 const SLICE_NAME = 'orders';
 

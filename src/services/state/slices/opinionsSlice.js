@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import { getLatestOpinions } from "fakebackend/FakeBackend2";
+import { getLatestOpinions } from "fakebackend/FakeBackend";
 
 const SLICE_NAME = 'opinions';
 

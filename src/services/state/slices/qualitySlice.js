@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import { getQualityRating } from "fakebackend/FakeBackend2";
+import { getQualityRating } from "fakebackend/FakeBackend";
 
 const SLICE_NAME = 'quality';
 
