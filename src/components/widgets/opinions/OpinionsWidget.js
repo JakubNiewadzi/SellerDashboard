@@ -1,74 +1,56 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { opinions } from "../../../fakebackend/FakeBackend";
 import { NavLink } from "react-router-dom";
 import { WidgetComponent } from "../../widget/WidgetComponent";
 import { StdButtonLarge, StdButtonTiny } from "../../common/StdButton";
 import { ColumnMediumGappedList, RowTinyGappedList } from "../../common/LinearGappedList";
 import { OpinionPane } from "./OpinionPane";
+import { useDispatch } from 'react-redux';
+import { updateOpinionsInfo } from "services/state/slices/opinionsSlice";
+import { OPINIONS_ALL, OPINIONS_POSITIVE, OPINIONS_NEGATIVE } from "fakebackend/FakeBackend2";
 
 export const OpinionsWidget = () => {
-    const [clickedButton, setClickedButton] = useState(3);
-    const [filteredOpinions, setFilteredOpinions] = useState([])
+    const [clickedButton, setClickedButton] = useState(OPINIONS_ALL);
 
-    const translation = useSelector(state => state.context.translation)
-    const user = useSelector(state => state.auth.user)
-    const currentAccount = useSelector(state => state.auth.currentAccount)
-
-    useEffect(() => {
-        updateOpinions(clickedButton)
-    }, [currentAccount]);
+    const dispatch = useDispatch();
+    const messages = useSelector(state => state.context.translation.opinionsWidget)
+    const info = useSelector(state => state.opinions)
+    const user = useSelector(state => state.auth)
 
     useEffect(() => {
         updateOpinions(clickedButton);
-    }, []);
+    }, [dispatch, user]);
 
-    const updateOpinions = (buttonId) => {
-        const checkOpinion = (opinion) => {
-            if (buttonId === 1) return opinion.isPositive;
-            if (buttonId === 2) return !opinion.isPositive;
-            return true;
-        };
-        const filteredAndSortedOpinions = opinions
-            .filter(opinion => checkOpinion(opinion) && opinion.user.username === user && opinion.user.account === currentAccount)
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .slice(0, 5);
-        setFilteredOpinions(filteredAndSortedOpinions);
-        setClickedButton(buttonId);
+    const updateOpinions = (type) => {
+        dispatch(updateOpinionsInfo(user.user, user.currentAccount, type));
+        setClickedButton(type);
     };
 
-    const RadioButtonGroup = () => {
-        return <RowTinyGappedList>
-            <StdButtonTiny
-                color={clickedButton === 1 ? 'success' : 'primary'}
-                onClick={() => updateOpinions(1)}
-            >{translation['positive']}</StdButtonTiny>
-            <StdButtonTiny
-                color={clickedButton === 2 ? 'success' : 'primary'}
-                onClick={() => updateOpinions(2)}>
-                {translation['negative']}
-            </StdButtonTiny>
-            <StdButtonTiny
-                color={clickedButton === 3 ? 'success' : 'primary'}
-                onClick={() => updateOpinions(3)}>
-                {translation['all']}
-            </StdButtonTiny>
-        </RowTinyGappedList>;
-    };
+    const getRadioButton = (type, message) => {
+        return <StdButtonTiny
+            color={clickedButton === type ? 'success' : 'primary'}
+            onClick={() => updateOpinions(type)}
+        >{message}</StdButtonTiny>
+    }
 
     return <WidgetComponent
-        title={translation['opinions']}
-        remainder={<RadioButtonGroup />}
+        title={messages.mainTitle} isLoading={info.isLoading} remainder={<RowTinyGappedList>
+            {getRadioButton(OPINIONS_POSITIVE, messages.positive)}
+            {getRadioButton(OPINIONS_NEGATIVE, messages.negative)}
+            {getRadioButton(OPINIONS_ALL, messages.all)}
+        </RowTinyGappedList>}
     >
         <ColumnMediumGappedList>
-            {opinions.length !== 0 ? filteredOpinions.map((filteredOpinion, index) => {
-                return <OpinionPane key={index} opinionDTO={filteredOpinion} />
-            }) : <span className='no-content-text'>{translation['noOpinionsFound']}</span>}
-            {
-                opinions.length !== 0 && <StdButtonLarge tag={NavLink} to='/opinions'>
-                    {translation['moreOpinions']}
+            {info.isPresent ? <>
+                {info.opinions?.map((o, index) => (
+                    <OpinionPane key={index} opinionDTO={o} />
+                ))}
+                <StdButtonLarge tag={NavLink} to='/opinions'>
+                    {messages.moreOpinionsButtonLabel}
                 </StdButtonLarge>
-            }
+            </> : <>
+                <span className='no-content-text'>{messages.noOpinionsPresentMessage}</span>
+            </>}
         </ColumnMediumGappedList>
     </WidgetComponent>;
 }

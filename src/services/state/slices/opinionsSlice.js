@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
-import { getQualityRating } from "fakebackend/FakeBackend2";
+import { getLatestOpinions } from "fakebackend/FakeBackend2";
 
-const SLICE_NAME = 'quality';
+const SLICE_NAME = 'opinions';
 
 const UPDATE_T = "UPDATE_T";
 const SET_LOADING_T = "SET_LOADING_T";
@@ -14,11 +14,10 @@ const action_clear = () => ({ type: SLICE_NAME+'/'+CLEAR_T });
 const initialState = {
     isPresent: false,
     isLoading: false,
-    cumulativeGrade: null,
-    worstAspects: null,
+    opinions: [],
 }
 
-const qualitySlice = createSlice({
+const opinionsSlice = createSlice({
     name: SLICE_NAME,
     initialState,
     reducers: {
@@ -28,29 +27,27 @@ const qualitySlice = createSlice({
         UPDATE_T: (state, action) => {
             state.isPresent = action.payload.isPresent;
             state.isLoading = false;
-            state.cumulativeGrade = action.payload.cumulativeGrade;
-            state.worstAspects = action.payload.worstAspects
+            state.opinions = action.payload.opinions;
         },
         CLEAR_T: (state) => {
             state.isPresent = initialState.isPresent;
             state.isLoading = initialState.isLoading;
-            state.cumulativeGrade = initialState.cumulativeGrade;
-            state.worstAspects = initialState.worstAspects
+            state.opinions = initialState.opinions;
         },
     }
 })
 
-export const qualityReducer = qualitySlice.reducer;
+export const opinionsReducer = opinionsSlice.reducer;
 
-export const updateQualityInfo = (username, account) => async (dispatch) => {
+export const updateOpinionsInfo = (username, account, type) => async (dispatch) => {
     dispatch(action_setLoading(true));
     try {
-        dispatch(action_update(await getQualityRating(username, account)))
+        dispatch(action_update(await getLatestOpinions(username, account, type)))
     } catch (error) {
         dispatch(action_clear());
     }
 }
 
-export const clearQualityInfo = () => (dispatch) => {
+export const clearOpinionsInfo = () => (dispatch) => {
     dispatch(action_clear());
 }

@@ -6,22 +6,29 @@
   "signin": "Zaloguj się",
   "dashboard": "Panel",
   "logout": "Wyloguj się",
-  "positive": "Pozytywne",
-  "negative": "Negatywne",
-  "all": "Wszystkie",
-  "opinions": "Opinie kupujących",
-  "moreOpinions": "Więcej opinii",
-  "noOpinionsFound": "Nie znaleziono żadnych opinii",
-  "orders": "Zamówienia",
-  "notPaid": "Nieopłacone",
-  "notSent": "Niewysłane",
-  "returned": "Zwrócone",
+  "opinionsWidget": {
+    "mainTitle": "Opinie kupujących",
+    "moreOpinionsButtonLabel": "Więcej opinii",
+    "noOpinionsPresentMessage": "Nie znaleziono żadnych opinii",
+    "positive": "Pozytywne",
+    "negative": "Negatywne",
+    "all": "Wszystkie"
+  },
+  "ordersWidget": {
+    "mainTitle": "Zamówienia",
+    "notPaid": "Nieopłacone",
+    "notSent": "Niewysłane",
+    "returned": "Zwrócone",
+    "ordersNotPresentButtonLabel": "Wypromuj swoje oferty",
+    "ordersNotPresentMessage": "Nie masz żadnych zamówień"
+  },
   "qualityWidget": {
     "mainTitle": "Jakość sprzedaży",
     "cumulativeGradeTitle": "Jakość sprzedaży",
     "worstAspectsTitle": "Aspekty z najgorszym wynikiem",
     "gradesPresentButtonLabel": "Jakość sprzedaży",
-    "gradesNotPresentButtonLabel": "Wystaw coś na sell",
-    "gradesNotPresentMessage": "Nic nie sprzedałeś!!"
+    "gradesNotPresentButtonLabel": "Wystaw produkt na sprzedaż",
+    "gradesNotPresentMessage": "Nie masz żadnych sprzedanych produktów"
   }
 }
+

@@ -1,29 +1,36 @@
-import { useSelector } from "react-redux";
-import { orders } from "../../../fakebackend/FakeBackend";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { OrderPane } from "./OrderPane";
 import { WidgetComponent } from "../../widget/WidgetComponent";
 import { ColumnMediumGappedList } from "../../common/LinearGappedList";
+import { StdButtonLarge } from "components/common/StdButton";
+import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { updateOrdersInfo } from "services/state/slices/ordersSlice";
 
 export const OrdersWidget = () => {
-    const translation = useSelector(state => state.context.translation)
-    const user = useSelector(state => state.auth.user)
-    const currentAccount = useSelector(state => state.auth.currentAccount)
-    const [filteredOrders, setFilteredOrders] = useState(orders
-        .filter(order => order.user.username === user && order.user.account === currentAccount))
+    const dispatch = useDispatch();
+    const messages = useSelector(state => state.context.translation.ordersWidget)
+    const info = useSelector(state => state.orders)
+    const user = useSelector(state => state.auth)
 
     useEffect(() => {
-        setFilteredOrders(orders
-            .filter(order => order.user.username === user && order.user.account === currentAccount))
-    }, [currentAccount]);
+        dispatch(updateOrdersInfo(user.user, user.currentAccount));
+    }, [dispatch, user]);
 
-    return <WidgetComponent title={translation['orders']}>
+    return <WidgetComponent
+        title={messages.mainTitle} isLoading={info.isLoading}
+    >
         <ColumnMediumGappedList>
-            {orders.length !== 0 ? filteredOrders.map((filteredOrder, index) => {
-                return <OrderPane key={index}
-                    type={translation[filteredOrder.type]}
-                    count={filteredOrder.count} />
-            }) : <span className='no-content-text'>{translation['noOpinionsFound']}</span>}
+            {info.isPresent ? <>
+                <OrderPane name={messages.notPaid} count={info.notPaid} />
+                <OrderPane name={messages.notSent} count={info.notSent} />
+                <OrderPane name={messages.returned} count={info.returned} />
+            </> : <>
+                <span className='no-content-text'>{messages.ordersNotPresentMessage}</span>
+                <StdButtonLarge tag={NavLink} to='/quality'>
+                    {messages.ordersNotPresentButtonLabel}
+                </StdButtonLarge>
+            </>}
         </ColumnMediumGappedList>
     </WidgetComponent>;
 }

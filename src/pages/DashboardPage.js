@@ -1,21 +1,8 @@
 import { OpinionsWidget } from "../components/widgets/opinions/OpinionsWidget";
-import { SidebarComponent } from "../components/SidebarComponent";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import { OrdersWidget } from "../components/widgets/orders/OrdersWidget";
 import { QualityWidget } from "../components/widgets/quality/QualityWidget";
-import { useDispatch } from 'react-redux';
-import { updateQualityInformation } from "services/state/slices/qualitySlice";
 
 export const DashboardPage = () => {
-
-    const user = useSelector(state => state.auth)
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-        dispatch(updateQualityInformation(user.user, user.currentAccount));
-    }, [dispatch, user]);
-
     return <div className='Dashboard-page {!isDarkTheme ? "light" : "dark"}'>
         <OpinionsWidget />
         <OrdersWidget />

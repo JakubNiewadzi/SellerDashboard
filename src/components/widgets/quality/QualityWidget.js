@@ -1,33 +1,37 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { opinions } from "../../../fakebackend/FakeBackend";
 import { NavLink } from "react-router-dom";
 import { WidgetComponent } from "../../widget/WidgetComponent";
-import { StdButtonLarge, StdButtonTiny } from "../../common/StdButton";
-import { ColumnMediumGappedList, RowTinyGappedList } from "../../common/LinearGappedList";
+import { ColumnMediumGappedList } from "../../common/LinearGappedList";
 import { QualityPane } from "./QualityPane";
+import { useDispatch, useSelector } from "react-redux";
+import { StdButtonLarge } from "components/common/StdButton";
+import { useEffect } from "react";
+import { updateQualityInfo } from "services/state/slices/qualitySlice";
 
 export const QualityWidget = () => {
+    const dispatch = useDispatch();
     const messages = useSelector(state => state.context.translation.qualityWidget)
-    const qualityInfo = useSelector(state => state.quality)
+    const info = useSelector(state => state.quality)
+    const user = useSelector(state => state.auth)
 
-    const worstAspectsPanes = qualityInfo.worstAspects?.map((as) =>
-        <QualityPane title={as.name} rating={as.grade} />
-    );
+    useEffect(() => {
+        dispatch(updateQualityInfo(user.user, user.currentAccount));
+    }, [dispatch, user]);
 
     return <WidgetComponent
-        title={messages.mainTitle} isLoading={qualityInfo.isLoading}
+        title={messages.mainTitle} isLoading={info.isLoading}
     >
         <ColumnMediumGappedList>
-            {qualityInfo.isPresent ? <>
-                <QualityPane title={messages.cumulativeGradeTitle} rating={qualityInfo.cumulativeGrade} />
+            {info.isPresent ? <>
+                <QualityPane title={messages.cumulativeGradeTitle} rating={info.cumulativeGrade} />
                 <span>{messages.worstAspectsTitle}</span>
-                {worstAspectsPanes}
+                {info.worstAspects?.map((a, index) => (
+                    <QualityPane key={index} title={a.name} rating={a.grade} />
+                ))}
                 <StdButtonLarge tag={NavLink} to='/quality'>
                     {messages.gradesPresentButtonLabel}
                 </StdButtonLarge>
             </> : <>
-                <span>{messages.gradesNotPresentMessage}</span>
+                <span className='no-content-text'>{messages.gradesNotPresentMessage}</span>
                 <StdButtonLarge tag={NavLink} to='/quality'>
                     {messages.gradesNotPresentButtonLabel}
                 </StdButtonLarge>
