@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.css';
 import './styles/custom.scss'
 import './styles/colors.scss'
-import './components/widget/widgets.scss'
+import './components/widget/widget.scss'
 import './components/common/buttons.scss'
 import './components/widgets/widgets.scss'
 import App from './App';

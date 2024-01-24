@@ -6,6 +6,10 @@ export const LinearGappedList = ({ children, gap, direction, style, ...props }) 
     </div>;
 };
 
+export const ColumnZeroGappedList = ({ children, ...props }) => {
+    return <LinearGappedList gap="0px" direction="column" {...props}>{children}</LinearGappedList>;
+};
+
 export const ColumnTinyGappedList = ({ children, ...props }) => {
     return <LinearGappedList gap="5px" direction="column" {...props}>{children}</LinearGappedList>;
 };
@@ -20,6 +24,10 @@ export const ColumnMediumGappedList = ({ children, ...props }) => {
 
 export const ColumnLargeGappedList = ({ children, ...props }) => {
     return <LinearGappedList gap="30px" direction="column" {...props}>{children}</LinearGappedList>;
+};
+
+export const RowZeroGappedList = ({ children, ...props }) => {
+    return <LinearGappedList gap="0px" direction="row" {...props}>{children}</LinearGappedList>;
 };
 
 export const RowTinyGappedList = ({ children, ...props }) => {

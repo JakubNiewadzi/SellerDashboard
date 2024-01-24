@@ -20,7 +20,7 @@ const StarsRow = ({ rating, ...props }) => {
 
 export const QualityPane = ({ rating, title, ...props }) => {
     return <ColumnEdgePane {...props}
-        top={<span>{title}</span>}
+        top={<h3>{title}</h3>}
         bottom={<StarsRow rating={rating} />}
     />
 }

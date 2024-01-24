@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { WidgetComponent } from "../../widget/WidgetComponent";
-import { StdButtonLarge, StdButtonTiny } from "../../common/StdButton";
+import { StdButtonTiny } from "../../common/StdButton";
 import { ColumnMediumGappedList, RowTinyGappedList } from "../../common/LinearGappedList";
 import { ProductsRankingPane } from "./ProductsRankingPane";
 import { useDispatch } from 'react-redux';
-import { PRODUCTS_RANKING_MOST_COMMON, PRODUCTS_RANKING_MOST_RARE } from "fakebackend/FakeBackend";
+import { PRODUCTS_RANKING_MOST_COMMON as PRODUCTS_RANKING_MOST_SOLD, PRODUCTS_RANKING_MOST_RARE as PRODUCTS_RANKING_LEAST_SOLD } from "fakebackend/FakeBackend";
 import { updateProductsRankingInfo } from "services/state/slices/productsRankingSlice";
 
 export const ProductsRankingWidget = () => {
-    const [clickedButton, setClickedButton] = useState(PRODUCTS_RANKING_MOST_COMMON);
+    const [clickedButton, setClickedButton] = useState(PRODUCTS_RANKING_MOST_SOLD);
 
     const dispatch = useDispatch();
     const messages = useSelector(state => state.context.translation.productsRanking)
@@ -35,9 +34,9 @@ export const ProductsRankingWidget = () => {
 
     return <WidgetComponent
         title={messages.mainTitle} isLoading={info.isLoading} remainder={info.isPresent && <RowTinyGappedList>
-            <span>{messages.frequency}</span>
-            {getRadioButton(PRODUCTS_RANKING_MOST_COMMON, messages.mostCommon)}
-            {getRadioButton(PRODUCTS_RANKING_MOST_RARE, messages.mostRare)}
+            <h5>{messages.frequency}</h5>
+            {getRadioButton(PRODUCTS_RANKING_MOST_SOLD, messages.mostSold)}
+            {getRadioButton(PRODUCTS_RANKING_LEAST_SOLD, messages.leastSold)}
         </RowTinyGappedList>}
     >
         <ColumnMediumGappedList>
@@ -46,11 +45,11 @@ export const ProductsRankingWidget = () => {
                     key={index}
                     name={o.name}
                     subtextTop={messages.sold} subtextTopValue={o.sold}
-                    subtextBottom={clickedButton == PRODUCTS_RANKING_MOST_RARE 
+                    subtextBottom={clickedButton == PRODUCTS_RANKING_LEAST_SOLD 
                         ? messages.uniqueViews 
                         : messages.rotation
                     }
-                    subtextBottomValue={clickedButton == PRODUCTS_RANKING_MOST_RARE
+                    subtextBottomValue={clickedButton == PRODUCTS_RANKING_LEAST_SOLD
                         ? o.uniqueViews 
                         : o.rotation
                     }

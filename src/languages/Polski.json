@@ -35,8 +35,8 @@
   "productsRanking": {
     "mainTitle": "Ranking ofert",
     "frequency": "Częstość sprzedawania",
-    "mostCommon": "Najczęstsza",
-    "mostRare": "Najrzadsza",
+    "mostSold": "Najczęstsza",
+    "leastSold": "Najrzadsza",
     "sold": "Sprzedano",
     "rotation": "Obrót",
     "uniqueViews": "Unikalnych wyświetleń",

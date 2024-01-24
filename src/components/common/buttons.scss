@@ -20,10 +20,9 @@
     }
 
     &.tiny {
-        width: 80px;
-        height: 25px;
+        height: fit-content;
         font-family: 'Noto Sans', 'sans-serif';
-        font-size: 13px;
+        font-size: 0.67em;
     }
 
 

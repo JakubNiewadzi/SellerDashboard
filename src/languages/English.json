@@ -1,24 +1,46 @@
 {
-  "username": "Username",
-  "password": "Password",
-  "usernamePh": "Your username",
-  "passwordPh": "Your password",
-  "signin": "Sign in",
-  "dashboard": "Dashboard",
-  "logout": "Log out",
-  "positive": "Positive",
-  "negative": "Negative",
-  "all": "All",
-  "opinions": "Customer opinions",
-  "moreOpinions": "More opinions",
-  "noOpinionsFound": "No opinions could have been found",
-  "orders": "Orders",
-  "notPaid": "Not paid",
-  "notSent": "Not sent",
-  "returned": "Returned",
-  "quality_widget": {
-    "title": "En~Jakość sprzedaży",
-    "worst_aspects": "En~Aspekty z najgorszym wynikiem",
-    "button": "En~Jakość sprzedaży"
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "loginPage": {
+      "username": "Username",
+      "usernamePh": "Your username",
+      "password": "Password",
+      "passwordPh": "Your password",
+      "signin": "Sign In"
+    },
+    "opinionsWidget": {
+      "mainTitle": "Buyer Opinions",
+      "moreOpinionsButtonLabel": "More Opinions",
+      "noOpinionsPresentMessage": "No opinions found",
+      "positive": "Positive",
+      "negative": "Negative",
+      "all": "All"
+    },
+    "ordersWidget": {
+      "mainTitle": "Orders",
+      "notPaid": "Not Paid",
+      "notSent": "Not Sent",
+      "returned": "Returned",
+      "ordersNotPresentButtonLabel": "Promote Your Offers",
+      "ordersNotPresentMessage": "You have no orders"
+    },
+    "qualityWidget": {
+      "mainTitle": "Sales Quality",
+      "cumulativeGradeTitle": "Sales Quality",
+      "worstAspectsTitle": "Aspects with the Lowest Scores",
+      "gradesPresentButtonLabel": "Sales Quality",
+      "gradesNotPresentButtonLabel": "List a Product for Sale",
+      "gradesNotPresentMessage": "You have not sold any products"
+    },
+    "productsRanking": {
+      "mainTitle": "Ranking of Offers",
+      "frequency": "Sales Frequency",
+      "mostSold": "Most Sold",
+      "leastSold": "Least Sold",
+      "sold": "Sold",
+      "rotation": "Rotation",
+      "uniqueViews": "Unique Views",
+      "noProductsToShow": "No offers to display"
+    }
   }
-}
+  
