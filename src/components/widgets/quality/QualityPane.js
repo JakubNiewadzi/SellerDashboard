@@ -1,6 +1,6 @@
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
 import { RowSmallGappedList } from "../../common/LinearGappedList";
-import { ColumnEdgeContainer } from "../../common/EdgeContainer";
+import { ColumnEdgePane } from "components/widget/WidgetPane";
 
 const StarsRow = ({ rating, ...props }) => {
     const stars = [];
@@ -18,9 +18,9 @@ const StarsRow = ({ rating, ...props }) => {
     return <RowSmallGappedList {...props}>{stars}</RowSmallGappedList>;
 };
 
-export const QualityPane = ({ rating, title, className, ...props }) => {
-    return <ColumnEdgeContainer className={`Pane || ${className}`} {...props}
+export const QualityPane = ({ rating, title, ...props }) => {
+    return <ColumnEdgePane {...props}
         top={<span>{title}</span>}
-        bottom={<StarsRow rating={rating}></StarsRow>}
+        bottom={<StarsRow rating={rating} />}
     />
 }

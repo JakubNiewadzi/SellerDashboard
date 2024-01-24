@@ -132,48 +132,11 @@
   color: var(--text-dark)
 }
 
-.Widget {
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  display: flex;
-  width: 470px;
-  background-color: white;
-  padding: 25px;
-  margin-right: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.Widget.dark {
-  background-color: #0e0e0e;
-  color: var(--text-dark)
-}
-
-.WidgetElementComponent {
-  background-color: #09a3c6;
-  margin-top: 15px;
-  padding: 8px;
-  display: flex;
-  flex-direction: row;
-  height: 70px;
-  border-radius: 2px;
-}
-
-.WidgetElementComponent.dark {
-  background-color: #001d1a;
-}
-
 .header-container {
   display: flex;
   flex-direction: row;
 }
 
-.thumb-container {
-  justify-items: center;
-  margin-left: auto;
-  font-size: 28px;
-}
 
 .opinion-text-container {
   display: flex;
@@ -193,24 +156,4 @@
 
 .redirect-button.dark {
   color: var(--text-dark);
-}
-
-.no-content-text {
-  display: flex;
-  flex-direction: column;
-  font-size: 13px;
-  font-weight: normal;
-  margin-top: 10px;
-  align-items: center;
-}
-
-.order-type-container {
-  display: flex;
-  align-items: center;
-}
-
-.order-count-container {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
 }

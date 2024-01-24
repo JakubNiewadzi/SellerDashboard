@@ -1,0 +1,25 @@
+.thumb-container {
+    justify-items: center;
+    margin-left: auto;
+    font-size: 28px;
+}
+
+.no-content-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    font-weight: normal;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.order-type-container {
+    display: flex;
+    align-items: center;
+}
+
+.order-count-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}

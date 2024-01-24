@@ -8,6 +8,7 @@ import './styles/custom.scss'
 import './styles/colors.scss'
 import './components/widget/widgets.scss'
 import './components/common/buttons.scss'
+import './components/widgets/widgets.scss'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
