@@ -29,9 +29,13 @@
 
     //types
     &.primary {
-        @include themeBackgroundWithHover($primary-light, $primary-dark);
+        @include themeBackground($primary-light, $primary-dark);
+        @include themeBackgroundHover($primary-light, $primary-dark);
+        @include themeBackgroundActive($primary-light, $primary-dark);
     }
     &.success {
-        @include themeBackgroundWithHover($success-light, $success-dark);
+        @include themeBackground($success-light, $success-dark);
+        @include themeBackgroundHover($success-light, $success-dark);
+        @include themeBackgroundActive($success-light, $success-dark);
     }
 }

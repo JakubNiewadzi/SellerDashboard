@@ -2,18 +2,34 @@
     @return mix($baseColor, if($frac > 0, white, black), abs($frac));
 }
 
-@mixin themeBackgroundWithHover($light, $dark) {
+@mixin themeBackground($light, $dark) {
     background-color: $light;
 
+    .dark & {
+        background-color: $dark;
+    }
+}
+
+@mixin themeBackgroundHover($light, $dark) {
     &:hover {
         background-color: generateHoverColor($light, -90%);
     }
 
     .dark & {
-        background-color: $dark;
-
         &:hover {
             background-color: generateHoverColor($dark, 90%);
+        }
+    }
+}
+
+@mixin themeBackgroundActive($light, $dark) {
+    &:active {
+        background-color: generateHoverColor($light, -80%);
+    }
+
+    .dark & {
+        &:active {
+            background-color: generateHoverColor($dark, 80%);
         }
     }
 }

@@ -19,6 +19,27 @@ const delayedResponse = (thunk) => {
     });
 };
 
+export const performLogin = (username, password) => {
+    return delayedResponse(() => {
+        switch (true) {
+            case username === "Marek" && password === "marek12":
+                return {
+                    isLoginSuccessful: true,
+                    user: "Marek",
+                    accounts: ["Konto1", "Konto2"],
+                };
+            case username === "Andrzej" && password === "andrzej21":
+                return {
+                    isLoginSuccessful: true,
+                    user: "Andrzej",
+                    accounts: ["Konto1", "Konto2"],
+                };
+            default:
+                return { isLoginSuccessful: false };
+        }
+    })
+}
+
 export const getQualityRating = (username, account) => {
     return delayedResponse(() => {
         switch (true) {

@@ -1,32 +1,60 @@
 import {createSlice} from "@reduxjs/toolkit";
+import { performLogin } from "fakebackend/FakeBackend";
+
+const SLICE_NAME = 'auth';
+
+const LOGIN_T = "LOGIN_T";
+const LOGOUT_T = "LOGOUT_T";
+const CHANGE_ACCOUNT_T = "CHANGE_ACCOUNT_T";
+
+const action_login = (user, accounts, currentAccount) => ({ type: SLICE_NAME+'/'+LOGIN_T, payload: {user: user, accounts: accounts, currentAccount: currentAccount} });
+const action_logout = () => ({ type: SLICE_NAME+'/'+LOGOUT_T });
+const action_changeAccount = (account) => ({ type: SLICE_NAME+'/'+CHANGE_ACCOUNT_T, payload: account });
 
 const initialState = {
     isLoggedIn: false,
     user: null,
+    accounts: null,
     currentAccount: null,
 }
 
 const authSlice = createSlice({
-    name: 'auth',
+    name: SLICE_NAME,
     initialState,
     reducers: {
-        login: (state, action) => {
+        LOGIN_T: (state, action) => {
             state.isLoggedIn = true;
-            state.user = action.payload.username;
-            state.currentAccount = action.payload.account
+            state.user = action.payload.user;
+            state.accounts = action.payload.accounts;
+            state.currentAccount = action.payload.currentAccount
         },
-        logout: (state) => {
-            state.isLoggedIn = false;
-            state.user = null;
-            state.currentAccount = null
+        LOGOUT_T: (state) => {
+            state.isLoggedIn = initialState.isLoggedIn;
+            state.user = initialState.user;
+            state.accounts = initialState.accounts;
+            state.currentAccount = initialState.currentAccount
         },
-        changeAccount: (state, action) => {
+        CHANGE_ACCOUNT_T: (state, action) => {
             state.currentAccount = action.payload
         }
     }
 })
 
-export const {login,
-    logout,
-    changeAccount} = authSlice.actions
-export default authSlice.reducer
+export const authReducer = authSlice.reducer;
+
+export const login = (user, password) => async (dispatch) => {
+    try {
+        const loginResult = await performLogin(user, password);
+        if(loginResult.isLoginSuccessful) {
+            dispatch(action_login(loginResult.user, loginResult.accounts, loginResult.accounts[0]))
+        }
+    } catch (error) {}
+}
+
+export const logout = () => (dispatch) => {
+    dispatch(action_logout());
+}
+
+export const changeAccount = (account) => (dispatch) => {
+    dispatch(action_changeAccount(account));
+}

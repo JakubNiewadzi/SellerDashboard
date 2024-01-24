@@ -1,11 +1,13 @@
 {
-  "username": "Nazwa użytkownika",
-  "password": "Hasło",
-  "usernamePh": "Twoja nazwa użytkownika",
-  "passwordPh": "Twoje hasło",
-  "signin": "Zaloguj się",
   "dashboard": "Panel",
   "logout": "Wyloguj się",
+  "loginPage": {
+    "username": "Nazwa użytkownika",
+    "usernamePh": "Twoja nazwa użytkownika",
+    "password": "Hasło",
+    "passwordPh": "Twoje hasło",
+    "signin": "Zaloguj się"
+  },
   "opinionsWidget": {
     "mainTitle": "Opinie kupujących",
     "moreOpinionsButtonLabel": "Więcej opinii",

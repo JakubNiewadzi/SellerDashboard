@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const StdButtonAny = ({ children, className, color = "primary", size = "tiny", ...props }) => {
     return <Button
-        tag={Link}
+        // tag={Link}
         className={`std-button ${color} ${size} ${className || ''}`}
         {...props}
     >{children}</Button>;

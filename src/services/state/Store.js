@@ -1,7 +1,7 @@
-import {configureStore} from "@reduxjs/toolkit"
-import authReducer from "./slices/authSlice"
+import { configureStore } from "@reduxjs/toolkit"
 import contextReducer from "./slices/contextSlice"
-import {qualityReducer} from "./slices/qualitySlice"
+import { authReducer } from "./slices/authSlice"
+import { qualityReducer } from "./slices/qualitySlice"
 import { ordersReducer } from "./slices/ordersSlice"
 import { opinionsReducer } from "./slices/opinionsSlice"
 

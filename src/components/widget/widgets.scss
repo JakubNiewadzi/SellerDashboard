@@ -12,7 +12,8 @@
     margin-top: 20px;
     margin-bottom: 20px;
     
-    @include themeBackgroundWithHover($widget-light, $widget-light);
+    @include themeBackground($widget-light, $widget-light);
+    @include themeBackgroundHover($widget-light, $widget-light);
 
 
     //types?
@@ -26,6 +27,7 @@
         height: 70px;
         border-radius: 2px;
 
-        @include themeBackgroundWithHover($widget-pane-light, $widget-pane-dark);
+        @include themeBackground($widget-pane-light, $widget-pane-dark);
+        @include themeBackgroundHover($widget-pane-light, $widget-pane-dark);
     }
 }
