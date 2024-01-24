@@ -31,6 +31,16 @@
     "gradesPresentButtonLabel": "Jakość sprzedaży",
     "gradesNotPresentButtonLabel": "Wystaw produkt na sprzedaż",
     "gradesNotPresentMessage": "Nie masz żadnych sprzedanych produktów"
+  },
+  "productsRanking": {
+    "mainTitle": "Ranking ofert",
+    "frequency": "Częstość sprzedawania",
+    "mostCommon": "Najczęstsza",
+    "mostRare": "Najrzadsza",
+    "sold": "Sprzedano",
+    "rotation": "Obrót",
+    "uniqueViews": "Unikalnych wyświetleń",
+    "noProductsToShow": "Brak ofert do wyświetlenia"
   }
 }
 

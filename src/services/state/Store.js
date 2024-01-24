@@ -4,6 +4,7 @@ import { authReducer } from "./slices/authSlice"
 import { qualityReducer } from "./slices/qualitySlice"
 import { ordersReducer } from "./slices/ordersSlice"
 import { opinionsReducer } from "./slices/opinionsSlice"
+import { productsRankingReducer } from "./slices/productsRankingSlice"
 
 export const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
         quality: qualityReducer,
         orders: ordersReducer,
         opinions: opinionsReducer,
+        productsRanking: productsRankingReducer,
     }
 })
 

@@ -150,3 +150,35 @@ export const getLatestOpinions = (username, account, type) => {
         }
     });
 };
+
+export const [PRODUCTS_RANKING_MOST_COMMON, PRODUCTS_RANKING_MOST_RARE] = [0, 1];
+
+export const getProductRanking = (username, account, type) => {
+    const mostRare = [
+        {name: "Łopata", sold: 33, img: "/spinner.gif", uniqueViews: 121},
+        {name: "Grabie", sold: 13, img: "/spinner.gif",  uniqueViews: 539},
+        {name: "Motyka", sold: 43, img: "/spinner.gif",  uniqueViews: 442},
+        {name: "Szpadel", sold: 31, img: "/spinner.gif",  uniqueViews: 131},
+        {name: "Kilof", sold: 53, img: "/spinner.gif",  uniqueViews: 221},
+    ];
+    const mostCommon = [
+        {name: "Łopata", sold: 33, img: "/spinner.gif", rotation: 32},
+        {name: "Grabie", sold: 13, img: "/spinner.gif", rotation: 12},
+        {name: "Motyka", sold: 43, img: "/spinner.gif", rotation: 51},
+        {name: "Szpadel", sold: 31, img: "/spinner.gif", rotation: 11},
+        {name: "Kilof", sold: 53, img: "/spinner.gif", rotation: 12},
+    ];
+    return delayedResponse(() => {
+        switch (true) {
+            case username === "Marek" && account === "Konto1":
+            case username === "Andrzej" && account === "Konto2":
+                return {
+                    isPresent: true,
+                    type: type,
+                    entries: type === PRODUCTS_RANKING_MOST_COMMON ? mostCommon : mostRare
+                }
+            default:
+                return { isPresent: false };
+        }
+    });
+};
