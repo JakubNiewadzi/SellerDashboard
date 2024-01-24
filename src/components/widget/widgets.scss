@@ -12,8 +12,8 @@
     margin-top: 20px;
     margin-bottom: 20px;
     
-    @include themeBackground($widget-light, $widget-light);
-    @include themeBackgroundHover($widget-light, $widget-light);
+    @include themeBackground($widget-light, $widget-dark);
+    @include themeBackgroundHover($widget-light, $widget-dark);
 
 
     //types?

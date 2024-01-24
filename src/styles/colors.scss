@@ -34,14 +34,21 @@
     }
 }
 
-$primary-light: #06778D;
-$primary-dark: #8b8d06;
+$pallette-a: #84D5FF;
+$pallette-b: #0CD0FF;
+$pallette-c: #09A3C6;
+$pallette-d: #06778D;
+$pallette-e: #034A53;
+$pallette-f: #001D1A;
 
-$success-light: #001d1a;
-$success-dark: #2ff7e3;
+$primary-light: $pallette-d;
+$primary-dark: $pallette-d;
 
-$widget-light: #ff4a9f;
-$widget-dark: rgb(209, 164, 39);
+$success-light: $pallette-f;
+$success-dark: $pallette-f;
 
-$widget-pane-light: #0ba9c9;
-$widget-pane-dark: #5ad421;
+$widget-light: #fff;
+$widget-dark: #000;
+
+$widget-pane-light: $pallette-b;
+$widget-pane-dark: $pallette-e;
