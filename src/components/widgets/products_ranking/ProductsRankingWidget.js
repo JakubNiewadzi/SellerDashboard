@@ -12,7 +12,7 @@ export const ProductsRankingWidget = () => {
     const [clickedButton, setClickedButton] = useState(PRODUCTS_RANKING_MOST_SOLD);
 
     const dispatch = useDispatch();
-    const messages = useSelector(state => state.context.translation.productsRanking)
+    const messages = useSelector(state => state.context.translation.productsRankingWidget)
     const info = useSelector(state => state.productsRanking)
     const user = useSelector(state => state.auth)
 

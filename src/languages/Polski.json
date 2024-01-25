@@ -32,7 +32,7 @@
     "gradesNotPresentButtonLabel": "Wystaw produkt na sprzedaż",
     "gradesNotPresentMessage": "Nie masz żadnych sprzedanych produktów"
   },
-  "productsRanking": {
+  "productsRankingWidget": {
     "mainTitle": "Ranking ofert",
     "frequency": "Częstość sprzedawania",
     "mostSold": "Najczęstsza",
@@ -41,6 +41,26 @@
     "rotation": "Obrót",
     "uniqueViews": "Unikalnych wyświetleń",
     "noProductsToShow": "Brak ofert do wyświetlenia"
+  },
+  "chartWidget": {
+    "mainTitle": "Zamówienia",
+    "measure": {
+        "title": "Miara",
+        "obrot": "Obrót",
+        "sprzedaz": "Sprzedaż"
+    },
+    "timeFrame": {
+        "title": "Zakres czasu",
+        "today": "Dziś",
+        "thisWeek": "Ten tydzień",
+        "thisMonth": "Ten miesiąc"
+    },
+    "chartType": {
+        "title": "Typ wykresu",
+        "slupkowy": "Słupkowy",
+        "liniowy": "Liniowy"
+    },
+    "addDataSeriesButtonLabel": "Dodatkowa seria danych"
   }
 }
 

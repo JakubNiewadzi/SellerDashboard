@@ -28,5 +28,14 @@
 
 .radio-button-hint {
     width: min-content;
-    text-align: center;
+    // text-align: center;
+}
+
+.chart-buttons-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.chart-buttons-grid-item {
+    padding: 4px;
 }

@@ -35,7 +35,7 @@ export const OpinionsWidget = () => {
     }
 
     return <WidgetComponent
-        title={messages.mainTitle} isLoading={info.isLoading} remainder={<RowGappedList className="size-tiny flex-align-center">
+        title={messages.mainTitle} isLoading={info.isLoading} remainder={info.isPresent && <RowGappedList className="size-tiny flex-align-center">
             {getRadioButton(OPINIONS_POSITIVE, messages.positive)}
             {getRadioButton(OPINIONS_NEGATIVE, messages.negative)}
             {getRadioButton(OPINIONS_ALL, messages.all)}

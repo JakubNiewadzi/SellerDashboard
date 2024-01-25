@@ -103,7 +103,7 @@ export const getLatestOpinions = (username, account, type) => {
                         ] : []),
                     ],
                 };
-            case username === "Marek" && account === "Konto2":
+            case username === "Marek" && account === "Konto21":
                 return {
                     isPresent: true, opinions: [
                         ...(includePositive ? [
