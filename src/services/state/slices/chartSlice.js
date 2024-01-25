@@ -32,10 +32,7 @@ const chartSlice = createSlice({
             state.isPresent = action.payload.isPresent;
             state.isLoading = false;
             state.type = action.payload.type;
-            console.log(JSON.stringify(state.periods))
-            console.log(JSON.stringify(action.payload))
             state.periods = addPeriod(state.periods, action.payload);
-            console.log(JSON.stringify(state.periods))
         },
         CLEAR_T: (state) => {
             state.isPresent = initialState.isPresent;

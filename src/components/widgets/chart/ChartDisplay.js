@@ -25,7 +25,7 @@ ChartJS.register(
 
 export const [CHART_TYPE_BAR, CHART_TYPE_LINE] = [Bar, Line];
 
-export const Kicia_v2 = ({ unformattedData, dataSelector, title, ChartType }) => {
+export const ChartDisplay = ({ unformattedData, dataSelector, title, ChartType }) => {
     if (unformattedData === undefined || Object.keys(unformattedData).length === 0 || ChartType === undefined)
         return <div></div>;
     const data = {
@@ -38,7 +38,7 @@ export const Kicia_v2 = ({ unformattedData, dataSelector, title, ChartType }) =>
             }
         }),
     }
-    const ss = {
+    const options = {
         responsive: true,
         plugins: {
             legend: {
@@ -50,7 +50,7 @@ export const Kicia_v2 = ({ unformattedData, dataSelector, title, ChartType }) =>
             },
         },
     };
-    return <ChartType options={ss} data={data} />;
+    return <ChartType options={options} data={data} />;
 }
 
 function getRandomColor() {

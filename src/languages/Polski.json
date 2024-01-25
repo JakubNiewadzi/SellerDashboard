@@ -62,7 +62,9 @@
     },
     "addDataSeriesButtonLabel": "Dodatkowa seria danych",
     "revenueChartTitle": "Wykaz obrotu",
-    "soldChartTitle": "Wykaz sprzedaży"
+    "soldChartTitle": "Wykaz sprzedaży",
+    "currentPeriod": "Obecny okres",
+    "previousPeriod": "Poprzedni okres"
   }
 }
 

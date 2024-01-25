@@ -1,12 +1,9 @@
-import { NavLink } from "react-router-dom";
 import { WidgetComponent } from "../../widget/WidgetComponent";
 import { ColumnGappedList } from "../../common/LinearGappedList";
-import { CHART_TYPE_BAR, CHART_TYPE_LINE, Kicia, Kicia_v2, QualityPane } from "./Chartww";
+import { CHART_TYPE_BAR, CHART_TYPE_LINE, ChartDisplay } from "./ChartDisplay";
 import { useDispatch, useSelector } from "react-redux";
 import { StdButtonAny } from "components/common/StdButton";
 import { useEffect, useState } from "react";
-import { updateQualityInfo } from "services/state/slices/qualitySlice";
-import { ColumnEdgeContainer } from "components/common/EdgeContainer";
 import { CHART_MONTH, CHART_WEEK, CHART_DAY, CHART_MEASURE_SOLD, CHART_MEASURE_REVENUE } from "fakebackend/FakeBackend";
 import { addPeriodToChart } from "services/state/slices/chartSlice";
 import { LoadingWrapper } from "components/common/LoadingWrapper";
@@ -16,39 +13,14 @@ export const ChartWidget = () => {
     const [measureType, setMeasureType] = useState(CHART_MEASURE_SOLD);
     const [timeFrame, setTimeFrame] = useState(CHART_DAY);
     const [chartType, setChartType] = useState(CHART_TYPE_BAR);
+    const [extraDataSeries, setExtraDataSeries] = useState(false);
     const messages = useSelector(state => state.context.translation.chartWidget)
     const info = useSelector(state => state.chart)
     const user = useSelector(state => state.auth)
 
     useEffect(() => {
-        dispatch(addPeriodToChart(user.user, user.currentAccount, 'okuu', timeFrame));
-        dispatch(addPeriodToChart(user.user, user.currentAccount, 'unyu', timeFrame));
-        dispatch(addPeriodToChart(user.user, user.currentAccount, 'uwu', timeFrame));
-        dispatch(addPeriodToChart(user.user, user.currentAccount, 'owo', timeFrame));
-    }, [dispatch, timeFrame]);
-
-    /*
-    "chartWidget": {
-        "mainTitle": "Zamówienia",
-        "measure": {
-            "title": "Miara",
-            "obrot": "Obrót",
-            "sprzedaz": "Sprzedaż"
-        },
-        "timeFrame": {
-            "title": "Zakres czasu",
-            "today": "Dziś",
-            "thisWeek": "Ten tydzień",
-            "thisMonth": "Ten miesiąc"
-        },
-        "chartType": {
-            "title": "Typ wykresu",
-            "bar": "Słupkowy",
-            "line": "Liniowy"
-        },
-        "addDataSeriesButtonLabel": "Dodatkowa seria danych"
-      }
-    */
+        dispatch(addPeriodToChart(user.user, user.currentAccount, messages.currentPeriod, timeFrame));
+    }, [timeFrame]);
 
     const getRadioButton = (type, selectedType, setter, message) => {
         return <StdButtonAny
@@ -59,17 +31,19 @@ export const ChartWidget = () => {
     }
 
     return <WidgetComponent title={messages.mainTitle}>
-        <LoadingWrapper isLoading={info.isLoading}>
-            <Kicia_v2
-                dataSelector={measureType}
-                title={measureType === CHART_MEASURE_REVENUE
-                    ? messages.revenueChartTitle
-                    : messages.soldChartTitle
-                }
-                unformattedData={info.periods}
-                ChartType={chartType}
-            />
-        </LoadingWrapper>
+        <div className="chart-wrapper">
+            <LoadingWrapper size="100px" isLoading={info.isLoading}>
+                <ChartDisplay
+                    dataSelector={measureType}
+                    title={measureType === CHART_MEASURE_REVENUE
+                        ? messages.revenueChartTitle
+                        : messages.soldChartTitle
+                    }
+                    unformattedData={info.periods}
+                    ChartType={chartType}
+                />
+            </LoadingWrapper>
+        </div>
         <ColumnGappedList className="size-normal padding-zero">
             <ColumnGappedList className="size-zero">
                 <div class="chart-buttons-grid-container">
@@ -98,9 +72,11 @@ export const ChartWidget = () => {
                 </div>
                 <div><div className="minor-padding">
                     <div className="size-tiny">
-                        <StdButtonAny className="size-small width-100percent">
-                            {messages.addDataSeriesButtonLabel}
-                        </StdButtonAny>
+                        <StdButtonAny
+                            className="size-small width-100percent"
+                            color={extraDataSeries === true ? 'success' : 'primary'}
+                            onClick={() => setExtraDataSeries(!extraDataSeries)}
+                        >{messages.addDataSeriesButtonLabel}</StdButtonAny>
                     </div>
                 </div></div>
             </ColumnGappedList>
