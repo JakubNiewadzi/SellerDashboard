@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { OrderPane } from "./OrderPane";
 import { WidgetComponent } from "../../widget/WidgetComponent";
-import { ColumnMediumGappedList } from "../../common/LinearGappedList";
-import { StdButtonLarge } from "components/common/StdButton";
+import { ColumnGappedList } from "../../common/LinearGappedList";
+import { StdButtonAny } from "components/common/StdButton";
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { updateOrdersInfo } from "services/state/slices/ordersSlice";
@@ -20,17 +20,17 @@ export const OrdersWidget = () => {
     return <WidgetComponent
         title={messages.mainTitle} isLoading={info.isLoading}
     >
-        <ColumnMediumGappedList>
+        <ColumnGappedList className="size-normal padding-zero">
             {info.isPresent ? <>
                 <OrderPane name={messages.notPaid} count={info.notPaid} />
                 <OrderPane name={messages.notSent} count={info.notSent} />
                 <OrderPane name={messages.returned} count={info.returned} />
             </> : <>
                 <span className='no-content-text'>{messages.ordersNotPresentMessage}</span>
-                <StdButtonLarge tag={NavLink} to='/quality'>
+                <StdButtonAny tag={NavLink} to='/quality' className="size-large">
                     {messages.ordersNotPresentButtonLabel}
-                </StdButtonLarge>
+                </StdButtonAny>
             </>}
-        </ColumnMediumGappedList>
+        </ColumnGappedList>
     </WidgetComponent>;
 }

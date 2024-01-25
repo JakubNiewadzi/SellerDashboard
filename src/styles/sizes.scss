@@ -1,0 +1,60 @@
+$verylarge: 30px;
+$large: 24px;
+$medium: 20px;
+$normal: 16px;
+$small: 12px;
+$tiny: 8px;
+
+@mixin applySize($base) {
+    font-size: $base;
+    gap: $base * 5/4;
+
+    div,
+    button {
+        padding: $base * 3/8;
+
+        &.padding-zero {
+            padding: 0;
+        }
+    }
+}
+
+.size-verylarge {
+    @include applySize($verylarge);
+}
+
+.size-large {
+    @include applySize($large);
+}
+
+.size-medium {
+    @include applySize($medium);
+}
+
+.size-normal {
+    @include applySize($normal);
+}
+
+.size-small {
+    @include applySize($small);
+}
+
+.size-tiny {
+    @include applySize($tiny);
+}
+
+.size-zero {
+    @include applySize(0px);
+}
+
+.gap-zero {
+    gap: 0px;
+}
+
+.padding-zero {
+    padding: 0px;
+}
+
+.bold {
+    font-weight: bold;
+}

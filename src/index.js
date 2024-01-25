@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.css';
 import './styles/custom.scss'
 import './styles/colors.scss'
+import './styles/sizes.scss'
+import './styles/alignment.scss'
 import './components/widget/widget.scss'
 import './components/common/buttons.scss'
 import './components/widgets/widgets.scss'

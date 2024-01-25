@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { WidgetComponent } from "../../widget/WidgetComponent";
-import { StdButtonLarge, StdButtonTiny } from "../../common/StdButton";
-import { ColumnMediumGappedList, RowTinyGappedList } from "../../common/LinearGappedList";
+import { StdButtonAny } from "../../common/StdButton";
+import { ColumnGappedList, RowGappedList } from "../../common/LinearGappedList";
 import { OpinionPane } from "./OpinionPane";
 import { useDispatch } from 'react-redux';
 import { updateOpinionsInfo } from "services/state/slices/opinionsSlice";
@@ -27,30 +27,29 @@ export const OpinionsWidget = () => {
     };
 
     const getRadioButton = (type, message) => {
-        return <StdButtonTiny
+        return <StdButtonAny
             color={clickedButton === type ? 'success' : 'primary'}
+            className="size-small"
             onClick={() => updateOpinions(type)}
-        >{message}</StdButtonTiny>
+        >{message}</StdButtonAny>
     }
 
     return <WidgetComponent
-        title={messages.mainTitle} isLoading={info.isLoading} remainder={<RowTinyGappedList>
+        title={messages.mainTitle} isLoading={info.isLoading} remainder={<RowGappedList className="size-tiny flex-align-center">
             {getRadioButton(OPINIONS_POSITIVE, messages.positive)}
             {getRadioButton(OPINIONS_NEGATIVE, messages.negative)}
             {getRadioButton(OPINIONS_ALL, messages.all)}
-        </RowTinyGappedList>}
+        </RowGappedList>}
     >
-        <ColumnMediumGappedList>
+        <ColumnGappedList className="size-small padding-zero">
             {info.isPresent ? <>
-                {info.opinions?.map((o, index) => (
-                    <OpinionPane key={index} opinionDTO={o} />
-                ))}
-                <StdButtonLarge tag={NavLink} to='/opinions'>
+                {info.opinions?.map((o, index) => (<OpinionPane key={index} {...o} />))}
+                <StdButtonAny tag={NavLink} to='/opinions' className="size-large">
                     {messages.moreOpinionsButtonLabel}
-                </StdButtonLarge>
+                </StdButtonAny>
             </> : <>
                 <span className='no-content-text'>{messages.noOpinionsPresentMessage}</span>
             </>}
-        </ColumnMediumGappedList>
+        </ColumnGappedList>
     </WidgetComponent>;
 }

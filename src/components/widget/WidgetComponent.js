@@ -1,16 +1,16 @@
 import React from 'react';
 import { RowEdgeContainer } from "../common/EdgeContainer";
-import { ColumnSmallGappedList } from '../common/LinearGappedList';
+import { ColumnGappedList } from '../common/LinearGappedList';
 import { LoadingWrapper } from 'components/common/LoadingWrapper';
 
 export const WidgetComponent = ({ children, title, remainder, isLoading, ...props }) => {
-    return <ColumnSmallGappedList className="std-widget" {...props}>
-        <RowEdgeContainer
-            left={<h2>{title}</h2>}
+    return <ColumnGappedList className="std-widget size-tiny" {...props}>
+        <RowEdgeContainer className="padding-zero flex-align-center"
+            left={<span className="size-large bold">{title}</span>}
             right={remainder}
         />
-        <LoadingWrapper isLoading={isLoading}>
+        <LoadingWrapper isLoading={isLoading} style={{width: "100px", margin: "auto"}}>
             {children}
         </LoadingWrapper>
-    </ColumnSmallGappedList>
+    </ColumnGappedList>
 }

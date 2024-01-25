@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { login } from "../services/state/slices/authSlice";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-import { StdButtonLarge } from "components/common/StdButton";
+import { StdButtonAny } from "components/common/StdButton";
 
 export const LoginPage = () => {
     const [username, setUsername] = useState('')
@@ -49,7 +49,7 @@ export const LoginPage = () => {
                 />
             </FormGroup>
             <FormGroup>
-                <StdButtonLarge type='submit'>{messages.signin}</StdButtonLarge>
+                <StdButtonAny type='submit' className="size-large">{messages.signin}</StdButtonAny>
             </FormGroup>
         </Form>
     </div>;

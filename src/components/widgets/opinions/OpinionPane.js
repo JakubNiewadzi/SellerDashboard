@@ -1,16 +1,31 @@
 import { IoMdThumbsUp, IoMdThumbsDown } from "react-icons/io";
-import { ColumnTinyGappedList } from "../../common/LinearGappedList";
+import { ColumnGappedList } from "../../common/LinearGappedList";
 import { RowEdgeWidgetPane } from "../../widget/WidgetPane";
 
-export const OpinionPane = ({ opinionDTO }) => {
-    return <RowEdgeWidgetPane
-        left={<ColumnTinyGappedList>
-            <span>{opinionDTO.from}</span>
-            <span style={{ fontSize: '13px', fontWeight: 'normal', fontFamily: "Noto Sans" }}>{opinionDTO.opinion}</span>
-        </ColumnTinyGappedList>}
+export const OpinionPane = ({ isPositive, from, opinion }) => {
+    const left = <ColumnGappedList className="size-zero">
+        <span className="size-medium">{from}</span>
+        <span className="size-small">{opinion}</span>
+    </ColumnGappedList>;
 
-        right={<div className='thumb-container'>
-            {opinionDTO.isPositive ? <IoMdThumbsUp /> : <IoMdThumbsDown />}
-        </div>}
+    const right = <div className='thumb-container'>
+        {isPositive ? <IoMdThumbsUp /> : <IoMdThumbsDown />}
+    </div>;
+
+    return <RowEdgeWidgetPane left={left} right={right} />;
+}
+
+/*
+
+export const OrderPane = ({ name, count, nav, ...props }) => {
+    const navigate = useNavigate();
+    return <RowEdgeWidgetPane
+        onClick={navigate(nav)}
+        className="order-pane cursor-pointer flex-align-center"
+        left={<span className="size-medium">{name}</span>}
+        right={<span className="size-medium">{count}</span>}
+        {...props}
     />;
 }
+
+*/

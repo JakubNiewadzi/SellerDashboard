@@ -137,22 +137,10 @@
     flex-direction: row;
   }
   
-  
-  .opinion-text-container {
-    display: flex;
-    flex-direction: column;
+  cursor-pointer {
+    cursor: pointer;
   }
   
-  .redirect-button {
-    display: flex;
-    width: 100%;
-    height: 70px;
-    margin-top: 15px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 2px;
-    color: white;
-  }
   
   .redirect-button.dark {
     color: var(--text-dark);

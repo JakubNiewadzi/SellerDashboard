@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { WidgetComponent } from "../../widget/WidgetComponent";
-import { ColumnMediumGappedList } from "../../common/LinearGappedList";
+import { ColumnGappedList } from "../../common/LinearGappedList";
 import { QualityPane } from "./QualityPane";
 import { useDispatch, useSelector } from "react-redux";
-import { StdButtonLarge } from "components/common/StdButton";
+import { StdButtonAny } from "components/common/StdButton";
 import { useEffect } from "react";
 import { updateQualityInfo } from "services/state/slices/qualitySlice";
 
@@ -20,22 +20,22 @@ export const QualityWidget = () => {
     return <WidgetComponent
         title={messages.mainTitle} isLoading={info.isLoading}
     >
-        <ColumnMediumGappedList>
+        <ColumnGappedList className="size-normal padding-zero">
             {info.isPresent ? <>
                 <QualityPane title={messages.cumulativeGradeTitle} rating={info.cumulativeGrade} />
                 <span>{messages.worstAspectsTitle}</span>
                 {info.worstAspects?.map((a, index) => (
                     <QualityPane key={index} title={a.name} rating={a.grade} />
                 ))}
-                <StdButtonLarge tag={NavLink} to='/quality'>
+                <StdButtonAny tag={NavLink} to='/quality' className="size-large">
                     {messages.gradesPresentButtonLabel}
-                </StdButtonLarge>
+                </StdButtonAny>
             </> : <>
                 <span className='no-content-text'>{messages.gradesNotPresentMessage}</span>
-                <StdButtonLarge tag={NavLink} to='/quality'>
+                <StdButtonAny tag={NavLink} to='/quality' className="size-large">
                     {messages.gradesNotPresentButtonLabel}
-                </StdButtonLarge>
+                </StdButtonAny>
             </>}
-        </ColumnMediumGappedList>
+        </ColumnGappedList>
     </WidgetComponent>;
 }

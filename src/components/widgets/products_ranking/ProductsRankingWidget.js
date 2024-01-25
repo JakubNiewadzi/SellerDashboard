@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { WidgetComponent } from "../../widget/WidgetComponent";
-import { StdButtonTiny } from "../../common/StdButton";
-import { ColumnMediumGappedList, RowTinyGappedList } from "../../common/LinearGappedList";
+import { ColumnGappedList, RowGappedList } from "../../common/LinearGappedList";
 import { ProductsRankingPane } from "./ProductsRankingPane";
 import { useDispatch } from 'react-redux';
 import { PRODUCTS_RANKING_MOST_COMMON as PRODUCTS_RANKING_MOST_SOLD, PRODUCTS_RANKING_MOST_RARE as PRODUCTS_RANKING_LEAST_SOLD } from "fakebackend/FakeBackend";
 import { updateProductsRankingInfo } from "services/state/slices/productsRankingSlice";
+import { StdButtonAny } from "components/common/StdButton";
 
 export const ProductsRankingWidget = () => {
     const [clickedButton, setClickedButton] = useState(PRODUCTS_RANKING_MOST_SOLD);
@@ -26,20 +26,21 @@ export const ProductsRankingWidget = () => {
     };
 
     const getRadioButton = (type, message) => {
-        return <StdButtonTiny
+        return <StdButtonAny
             color={clickedButton === type ? 'success' : 'primary'}
+            className="size-small"
             onClick={() => updateRankingType(type)}
-        >{message}</StdButtonTiny>
+        >{message}</StdButtonAny>
     }
 
     return <WidgetComponent
-        title={messages.mainTitle} isLoading={info.isLoading} remainder={info.isPresent && <RowTinyGappedList>
+        title={messages.mainTitle} isLoading={info.isLoading} remainder={info.isPresent && <RowGappedList className="size-tiny">
             <h5>{messages.frequency}</h5>
             {getRadioButton(PRODUCTS_RANKING_MOST_SOLD, messages.mostSold)}
             {getRadioButton(PRODUCTS_RANKING_LEAST_SOLD, messages.leastSold)}
-        </RowTinyGappedList>}
+        </RowGappedList>}
     >
-        <ColumnMediumGappedList>
+        <ColumnGappedList className="size-normal padding-zero">
             {info.isPresent ? <>
                 {info.entries?.map((o, index) => (<ProductsRankingPane
                     key={index}
@@ -58,6 +59,6 @@ export const ProductsRankingWidget = () => {
             </> : <>
                 <span className='no-content-text'>{messages.noProductsToShow}</span>
             </>}
-        </ColumnMediumGappedList>
+        </ColumnGappedList>
     </WidgetComponent>;
 }

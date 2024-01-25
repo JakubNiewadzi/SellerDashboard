@@ -6,35 +6,26 @@
     justify-content: center;
     align-items: center;
     border-radius: 2px;
+    font-family: 'Noto Sans', 'sans-serif';
+    height: fit-content;
+
 
     color: white;
     .dark & {
         color: var(--text-dark);
     }
 
-
-    //sizes
-    &.large {
-        width: 100%;
-        height: 70px;
-    }
-
-    &.tiny {
-        height: fit-content;
-        font-family: 'Noto Sans', 'sans-serif';
-        font-size: 0.67em;
-    }
-
-
-    //types
     &.primary {
         @include themeBackground($primary-light, $primary-dark);
         @include themeBackgroundHover($primary-light, $primary-dark);
         @include themeBackgroundActive($primary-light, $primary-dark);
+        @include themeBorderColor($primary-light, $primary-dark);
     }
     &.success {
         @include themeBackground($success-light, $success-dark);
         @include themeBackgroundHover($success-light, $success-dark);
         @include themeBackgroundActive($success-light, $success-dark);
+        @include themeBorderColor($success-light, $success-dark);
     }
+
 }

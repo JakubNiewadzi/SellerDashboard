@@ -2,12 +2,10 @@
 
 .std-widget {
     //common
-    font-weight: bold;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     flex-direction: column;
-    display: flex;
     width: 470px;
-    padding: 25px;
+    padding: 18px;
     margin-right: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -21,8 +19,6 @@
         padding-bottom: 6px;
         padding-left: 12px;
         padding-right: 12px;
-        display: flex;
-        flex-direction: row;
         height: 72px;
         border-radius: 4px;
 

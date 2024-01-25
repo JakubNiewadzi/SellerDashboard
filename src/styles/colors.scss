@@ -1,37 +1,41 @@
-@function generateHoverColor($baseColor, $frac) {
+@function generateTintedColor($baseColor, $frac) {
     @return mix($baseColor, if($frac > 0, white, black), abs($frac));
 }
 
-@mixin themeBackground($light, $dark) {
-    background-color: $light;
-
-    .dark & {
-        background-color: $dark;
+@mixin themeRule($selector, $ruleName, $light, $dark, $tint: null) {
+    #{$selector} {
+        #{$ruleName}: $light;
     }
+
+    .dark #{$selector} {
+        #{$ruleName}: $dark;
+    }
+
+    @if ($tint !=null) {
+        #{$selector} {
+            #{$ruleName}: generateTintedColor($light, -$tint);
+        }
+
+        .dark #{$selector} {
+            #{$ruleName}: generateTintedColor($dark, $tint);
+        }
+    }
+}
+
+@mixin themeBackground($light, $dark) {
+    @include themeRule('&', 'background-color', $light, $dark, null);
 }
 
 @mixin themeBackgroundHover($light, $dark) {
-    &:hover {
-        background-color: generateHoverColor($light, -90%);
-    }
-
-    .dark & {
-        &:hover {
-            background-color: generateHoverColor($dark, 90%);
-        }
-    }
+    @include themeRule('&:hover', 'background-color', $light, $dark, 90%);
 }
 
 @mixin themeBackgroundActive($light, $dark) {
-    &:active {
-        background-color: generateHoverColor($light, -80%);
-    }
+    @include themeRule('&:active', 'background-color', $light, $dark, 80%);
+}
 
-    .dark & {
-        &:active {
-            background-color: generateHoverColor($dark, 80%);
-        }
-    }
+@mixin themeBorderColor($light, $dark) {
+    @include themeRule('&:active', 'border-color', $light, $dark, 85%);
 }
 
 $pallette-a: #84D5FF;
