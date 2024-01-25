@@ -37,8 +37,8 @@ export const ChartWidget = () => {
         },
         "chartType": {
             "title": "Typ wykresu",
-            "slupkowy": "Słupkowy",
-            "liniowy": "Liniowy"
+            "bar": "Słupkowy",
+            "line": "Liniowy"
         },
         "addDataSeriesButtonLabel": "Dodatkowa seria danych"
       }
@@ -56,30 +56,39 @@ export const ChartWidget = () => {
         title={messages.mainTitle} isLoading={info.isLoading}
     >
         <ColumnGappedList className="size-normal padding-zero">
-            <div class="chart-buttons-grid-container">
-                <ColumnGappedList class="chart-buttons-grid-item">
-                    <span className="size-normal">{messages.measure.title}:</span>
-                    <ColumnGappedList className="size-tiny">
-                        {getRadioButton(0, measureType, setMeasureType, messages.measure.obrot)}
-                        {getRadioButton(1, measureType, setMeasureType, messages.measure.sprzedaz)}
+            <ColumnGappedList className="size-zero">
+                <div class="chart-buttons-grid-container">
+                    <ColumnGappedList class="minor-padding">
+                        <span className="size-normal">{messages.measure.title}:</span>
+                        <ColumnGappedList className="size-tiny">
+                            {getRadioButton(0, measureType, setMeasureType, messages.measure.obrot)}
+                            {getRadioButton(1, measureType, setMeasureType, messages.measure.sprzedaz)}
+                        </ColumnGappedList>
                     </ColumnGappedList>
-                </ColumnGappedList>
-                <ColumnGappedList class="chart-buttons-grid-item">
-                    <span className="size-normal">{messages.timeFrame.title}:</span>
-                    <ColumnGappedList className="size-tiny">
-                        {getRadioButton(0, timeFrame, setTimeFrame, messages.timeFrame.today)}
-                        {getRadioButton(1, timeFrame, setTimeFrame, messages.timeFrame.thisWeek)}
-                        {getRadioButton(2, timeFrame, setTimeFrame, messages.timeFrame.thisMonth)}
+                    <ColumnGappedList class="minor-padding">
+                        <span className="size-normal">{messages.timeFrame.title}:</span>
+                        <ColumnGappedList className="size-tiny">
+                            {getRadioButton(0, timeFrame, setTimeFrame, messages.timeFrame.today)}
+                            {getRadioButton(1, timeFrame, setTimeFrame, messages.timeFrame.thisWeek)}
+                            {getRadioButton(2, timeFrame, setTimeFrame, messages.timeFrame.thisMonth)}
+                        </ColumnGappedList>
                     </ColumnGappedList>
-                </ColumnGappedList>
-                <ColumnGappedList class="chart-buttons-grid-item">
-                    <span className="size-normal">{messages.chartType.title}:</span>
-                    <ColumnGappedList className="size-tiny">
-                        {getRadioButton(0, chartType, setChartType, messages.chartType.slupkowy)}
-                        {getRadioButton(1, chartType, setChartType, messages.chartType.liniowy)}
+                    <ColumnGappedList class="minor-padding">
+                        <span className="size-normal">{messages.chartType.title}:</span>
+                        <ColumnGappedList className="size-tiny">
+                            {getRadioButton(0, chartType, setChartType, messages.chartType.slupkowy)}
+                            {getRadioButton(1, chartType, setChartType, messages.chartType.liniowy)}
+                        </ColumnGappedList>
                     </ColumnGappedList>
-                </ColumnGappedList>
-            </div>
+                </div>
+                <div><div className="minor-padding">
+                    <div className="size-tiny">
+                        <StdButtonAny className="size-small width-100percent">
+                            {messages.addDataSeriesButtonLabel}
+                        </StdButtonAny>
+                    </div>
+                </div></div>
+            </ColumnGappedList>
 
 
             {/* {info.isPresent ? <>

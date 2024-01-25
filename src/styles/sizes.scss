@@ -9,8 +9,8 @@ $tiny: 8px;
     font-size: $base;
     gap: $base * 5/4;
 
-    > div,
-    > button {
+    >div,
+    >button {
         padding: $base * 3/8;
 
         &.padding-zero {
@@ -53,6 +53,10 @@ $tiny: 8px;
 
 .padding-zero {
     padding: 0px;
+}
+
+.width-100percent {
+    width: 100%;
 }
 
 .bold {

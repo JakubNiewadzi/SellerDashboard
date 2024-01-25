@@ -57,8 +57,8 @@
     },
     "chartType": {
         "title": "Typ wykresu",
-        "slupkowy": "Słupkowy",
-        "liniowy": "Liniowy"
+        "bar": "Słupkowy",
+        "line": "Liniowy"
     },
     "addDataSeriesButtonLabel": "Dodatkowa seria danych"
   }
