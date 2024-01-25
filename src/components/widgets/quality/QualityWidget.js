@@ -22,19 +22,23 @@ export const QualityWidget = () => {
     >
         <ColumnGappedList className="size-normal padding-zero">
             {info.isPresent ? <>
+
                 <QualityPane title={messages.cumulativeGradeTitle} rating={info.cumulativeGrade} />
-                <span>{messages.worstAspectsTitle}</span>
+                <span className="size-medium bold align-self-center">{messages.worstAspectsTitle}</span>
                 {info.worstAspects?.map((a, index) => (
                     <QualityPane key={index} title={a.name} rating={a.grade} />
                 ))}
                 <StdButtonAny tag={NavLink} to='/quality' className="size-large">
                     {messages.gradesPresentButtonLabel}
                 </StdButtonAny>
+
             </> : <>
-                <span className='no-content-text'>{messages.gradesNotPresentMessage}</span>
+
+                <span className='size-normal align-self-center'>{messages.gradesNotPresentMessage}</span>
                 <StdButtonAny tag={NavLink} to='/quality' className="size-large">
                     {messages.gradesNotPresentButtonLabel}
                 </StdButtonAny>
+
             </>}
         </ColumnGappedList>
     </WidgetComponent>;

@@ -4,7 +4,7 @@ import { WidgetComponent } from "../../widget/WidgetComponent";
 import { ColumnGappedList, RowGappedList } from "../../common/LinearGappedList";
 import { ProductsRankingPane } from "./ProductsRankingPane";
 import { useDispatch } from 'react-redux';
-import { PRODUCTS_RANKING_MOST_COMMON as PRODUCTS_RANKING_MOST_SOLD, PRODUCTS_RANKING_MOST_RARE as PRODUCTS_RANKING_LEAST_SOLD } from "fakebackend/FakeBackend";
+import { PRODUCTS_RANKING_MOST_SOLD, PRODUCTS_RANKING_LEAST_SOLD } from "fakebackend/FakeBackend";
 import { updateProductsRankingInfo } from "services/state/slices/productsRankingSlice";
 import { StdButtonAny } from "components/common/StdButton";
 
@@ -34,8 +34,8 @@ export const ProductsRankingWidget = () => {
     }
 
     return <WidgetComponent
-        title={messages.mainTitle} isLoading={info.isLoading} remainder={info.isPresent && <RowGappedList className="size-tiny">
-            <span className="size-small center">{messages.frequency}</span>
+        title={messages.mainTitle} isLoading={info.isLoading} remainder={info.isPresent && <RowGappedList className="size-tiny flex-align-center">
+            <span className="size-small radio-button-hint">{messages.frequency}</span>
             {getRadioButton(PRODUCTS_RANKING_MOST_SOLD, messages.mostSold)}
             {getRadioButton(PRODUCTS_RANKING_LEAST_SOLD, messages.leastSold)}
         </RowGappedList>}
@@ -57,7 +57,7 @@ export const ProductsRankingWidget = () => {
                     img={o.img}
                 />))}
             </> : <>
-                <span className='no-content-text'>{messages.noProductsToShow}</span>
+                <span className='size-normal align-self-center'>{messages.noProductsToShow}</span>
             </>}
         </ColumnGappedList>
     </WidgetComponent>;

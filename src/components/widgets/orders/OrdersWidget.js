@@ -26,7 +26,7 @@ export const OrdersWidget = () => {
                 <OrderPane name={messages.notSent} count={info.notSent} />
                 <OrderPane name={messages.returned} count={info.returned} />
             </> : <>
-                <span className='no-content-text'>{messages.ordersNotPresentMessage}</span>
+                <span className='size-normal align-self-center'>{messages.ordersNotPresentMessage}</span>
                 <StdButtonAny tag={NavLink} to='/quality' className="size-large">
                     {messages.ordersNotPresentButtonLabel}
                 </StdButtonAny>

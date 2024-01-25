@@ -48,7 +48,7 @@ export const OpinionsWidget = () => {
                     {messages.moreOpinionsButtonLabel}
                 </StdButtonAny>
             </> : <>
-                <span className='no-content-text'>{messages.noOpinionsPresentMessage}</span>
+                <span className='size-normal align-self-center'>{messages.noOpinionsPresentMessage}</span>
             </>}
         </ColumnGappedList>
     </WidgetComponent>;

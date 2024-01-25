@@ -9,7 +9,7 @@ export const WidgetComponent = ({ children, title, remainder, isLoading, ...prop
             left={<span className="size-large bold">{title}</span>}
             right={remainder}
         />
-        <LoadingWrapper isLoading={isLoading} style={{width: "100px", margin: "auto"}}>
+        <LoadingWrapper isLoading={isLoading} size="100px">
             {children}
         </LoadingWrapper>
     </ColumnGappedList>

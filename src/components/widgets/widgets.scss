@@ -18,12 +18,15 @@
     display: -webkit-box;
     max-height: 3em;
     margin: 0;
-    /* Reset margin to ensure accurate height calculation */
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     word-wrap: break-word;
     white-space: normal;
-    /* Reset white-space to ensure correct line wrapping */
+}
+
+.radio-button-hint {
+    width: min-content;
+    text-align: center;
 }

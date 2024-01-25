@@ -151,7 +151,7 @@ export const getLatestOpinions = (username, account, type) => {
     });
 };
 
-export const [PRODUCTS_RANKING_MOST_COMMON, PRODUCTS_RANKING_MOST_RARE] = [0, 1];
+export const [PRODUCTS_RANKING_MOST_SOLD, PRODUCTS_RANKING_LEAST_SOLD] = [0, 1];
 
 export const getProductRanking = (username, account, type) => {
     const mostRare = [
@@ -175,7 +175,7 @@ export const getProductRanking = (username, account, type) => {
                 return {
                     isPresent: true,
                     type: type,
-                    entries: type === PRODUCTS_RANKING_MOST_COMMON ? mostCommon : mostRare
+                    entries: type === PRODUCTS_RANKING_MOST_SOLD ? mostCommon : mostRare
                 }
             default:
                 return { isPresent: false };

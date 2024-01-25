@@ -5,10 +5,10 @@ import { QualityWidget } from "../components/widgets/quality/QualityWidget";
 
 export const DashboardPage = () => {
     return <div className='Dashboard-page {!isDarkTheme ? "light" : "dark"}'>
+        <QualityWidget />
         <ProductsRankingWidget />
         <OpinionsWidget />
         <OrdersWidget />
-        <QualityWidget />
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada
         bibendum arcu vitae. Rutrum tellus pellentesque eu tincidunt tortor aliquam
