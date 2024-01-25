@@ -48,6 +48,4 @@ export const updateOpinionsInfo = (username, account, type) => async (dispatch) 
     }
 }
 
-export const clearOpinionsInfo = () => (dispatch) => {
-    dispatch(action_clear());
-}
+export const clearOpinionsInfo = action_clear;

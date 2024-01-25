@@ -11,8 +11,8 @@ const CLEAR_T = "CLEAR_T";
 
 const action_updateCurrentPeriod = (response) => ({ type: SLICE_NAME + '/' + UPDATE_CURRENT_PERIOD_T, payload: response });
 const action_updatePreviousPeriod = (response) => ({ type: SLICE_NAME + '/' + UPDATE_PREVIOUS_PERIOD_T, payload: response });
-const action_clearPreviousPeriod = (response) => ({ type: SLICE_NAME + '/' + CLEAR_PREVIOUS_PERIOD_T, payload: response });
 const action_setLoading = (isLoading) => ({ type: SLICE_NAME + '/' + SET_LOADING_T, payload: isLoading });
+const action_clearPreviousPeriod = () => ({ type: SLICE_NAME + '/' + CLEAR_PREVIOUS_PERIOD_T });
 const action_clear = () => ({ type: SLICE_NAME + '/' + CLEAR_T });
 
 const initialState = {
@@ -78,10 +78,6 @@ export const updatePreviousPeriod = (username, account, period, type) => async (
     }
 }
 
-export const clearPreviousPeriod = () => (dispatch) => {
-    dispatch(action_clearPreviousPeriod());
-}
+export const clearPreviousPeriod = action_clearPreviousPeriod;
 
-export const clearChartInfo = () => (dispatch) => {
-    dispatch(action_clear());
-}
+export const clearChartInfo = action_clear;

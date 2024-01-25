@@ -66,8 +66,22 @@ export const ChartDisplay = ({ mainData, secondaryData, dataSelector, title, Cha
             },
         },
         scales: {
-            y: { ticks: { color: '#888' } },
-            x: { ticks: { color: '#888' } },
+            y: {
+                ticks: { color: '#888' },
+                grid: {
+                    color: '#888',
+                    borderColor: '#888',
+                    borderWidth: 1,
+                },
+            },
+            x: {
+                ticks: { color: '#888' },
+                grid: {
+                    color: '#888',
+                    borderColor: '#888',
+                    borderWidth: 1,
+                },
+            },
         },
     };
     return <ChartType options={options} data={data} />;

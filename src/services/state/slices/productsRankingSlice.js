@@ -51,6 +51,4 @@ export const updateProductsRankingInfo = (username, account, type) => async (dis
     }
 }
 
-export const clearProductsRankingInfo = () => (dispatch) => {
-    dispatch(action_clear());
-}
+export const clearProductsRankingInfo = action_clear;

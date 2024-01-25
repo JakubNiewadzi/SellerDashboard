@@ -51,6 +51,5 @@ export const updateQualityInfo = (username, account) => async (dispatch) => {
     }
 }
 
-export const clearQualityInfo = () => (dispatch) => {
-    dispatch(action_clear());
-}
+export const clearQualityInfo = action_clear;
+

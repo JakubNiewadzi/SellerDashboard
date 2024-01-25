@@ -54,6 +54,4 @@ export const updateOrdersInfo = (username, account) => async (dispatch) => {
     }
 }
 
-export const clearOrdersInfo = () => (dispatch) => {
-    dispatch(action_clear());
-}
+export const clearOrdersInfo = action_clear;

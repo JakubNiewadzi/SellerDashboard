@@ -51,10 +51,8 @@ export const login = (user, password) => async (dispatch) => {
     } catch (error) {}
 }
 
-export const logout = () => (dispatch) => {
-    dispatch(action_logout());
-}
+export const logout = action_logout;
 
-export const changeAccount = (account) => (dispatch) => {
-    dispatch(action_changeAccount(account));
+export const changeAccount = (account) =>  {
+    return action_changeAccount(account);
 }

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { StdButtonAny } from "components/common/StdButton";
 import { useEffect, useState } from "react";
 import { CHART_MONTH, CHART_WEEK, CHART_DAY, CHART_MEASURE_SOLD, CHART_MEASURE_REVENUE } from "fakebackend/FakeBackend";
-import { addPeriodToChart, clearChartInfo, clearPreviousPeriod, updateCurrentPeriod, updatePreviousPeriod } from "services/state/slices/chartSlice";
+import { clearPreviousPeriod, updateCurrentPeriod, updatePreviousPeriod } from "services/state/slices/chartSlice";
 import { LoadingWrapper } from "components/common/LoadingWrapper";
 
 export const ChartWidget = () => {
@@ -38,10 +38,6 @@ export const ChartWidget = () => {
             onClick={() => setter(type)}
         >{message}</StdButtonAny>;
     }
-
-    const dataEhh = {};
-    dataEhh[messages.currentPeriod] = info.currentPeriod;
-    dataEhh[messages.previousPeriod] = info.currentPeriod;
 
     return <WidgetComponent title={messages.mainTitle}>
         <div className="chart-wrapper">
