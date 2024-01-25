@@ -38,7 +38,7 @@
     "mostSold": "Najczęstsza",
     "leastSold": "Najrzadsza",
     "sold": "Sprzedano",
-    "rotation": "Obrót",
+    "revenue": "Obrót",
     "uniqueViews": "Unikalnych wyświetleń",
     "noProductsToShow": "Brak ofert do wyświetlenia"
   },
@@ -46,7 +46,7 @@
     "mainTitle": "Zamówienia",
     "measure": {
         "title": "Miara",
-        "obrot": "Obrót",
+        "revenue": "Obrót",
         "sprzedaz": "Sprzedaż"
     },
     "timeFrame": {
@@ -60,7 +60,9 @@
         "bar": "Słupkowy",
         "line": "Liniowy"
     },
-    "addDataSeriesButtonLabel": "Dodatkowa seria danych"
+    "addDataSeriesButtonLabel": "Dodatkowa seria danych",
+    "revenueChartTitle": "Wykaz obrotu",
+    "soldChartTitle": "Wykaz sprzedaży"
   }
 }
 

@@ -26,8 +26,6 @@ const productsRankingSlice = createSlice({
             state.isLoading = action.payload;
         },
         UPDATE_T: (state, action) => {
-            console.log(1233)
-            console.log(JSON.stringify(action))
             state.isPresent = action.payload.isPresent;
             state.isLoading = false;
             state.type = action.payload.type;

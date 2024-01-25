@@ -1,25 +1,31 @@
 import { NavLink } from "react-router-dom";
 import { WidgetComponent } from "../../widget/WidgetComponent";
 import { ColumnGappedList } from "../../common/LinearGappedList";
-import { QualityPane } from "./Chartww";
+import { CHART_TYPE_BAR, CHART_TYPE_LINE, Kicia, Kicia_v2, QualityPane } from "./Chartww";
 import { useDispatch, useSelector } from "react-redux";
 import { StdButtonAny } from "components/common/StdButton";
 import { useEffect, useState } from "react";
 import { updateQualityInfo } from "services/state/slices/qualitySlice";
 import { ColumnEdgeContainer } from "components/common/EdgeContainer";
+import { CHART_MONTH, CHART_WEEK, CHART_DAY, CHART_MEASURE_SOLD, CHART_MEASURE_REVENUE } from "fakebackend/FakeBackend";
+import { addPeriodToChart } from "services/state/slices/chartSlice";
+import { LoadingWrapper } from "components/common/LoadingWrapper";
 
 export const ChartWidget = () => {
     const dispatch = useDispatch();
-    const [measureType, setMeasureType] = useState(0);
-    const [timeFrame, setTimeFrame] = useState(0);
-    const [chartType, setChartType] = useState(0);
+    const [measureType, setMeasureType] = useState(CHART_MEASURE_SOLD);
+    const [timeFrame, setTimeFrame] = useState(CHART_DAY);
+    const [chartType, setChartType] = useState(CHART_TYPE_BAR);
     const messages = useSelector(state => state.context.translation.chartWidget)
-    const info = useSelector(state => state.quality)
+    const info = useSelector(state => state.chart)
     const user = useSelector(state => state.auth)
 
     useEffect(() => {
-        dispatch(updateQualityInfo(user.user, user.currentAccount));
-    }, [dispatch, user]);
+        dispatch(addPeriodToChart(user.user, user.currentAccount, 'okuu', timeFrame));
+        dispatch(addPeriodToChart(user.user, user.currentAccount, 'unyu', timeFrame));
+        dispatch(addPeriodToChart(user.user, user.currentAccount, 'uwu', timeFrame));
+        dispatch(addPeriodToChart(user.user, user.currentAccount, 'owo', timeFrame));
+    }, [dispatch, timeFrame]);
 
     /*
     "chartWidget": {
@@ -52,32 +58,41 @@ export const ChartWidget = () => {
         >{message}</StdButtonAny>;
     }
 
-    return <WidgetComponent
-        title={messages.mainTitle} isLoading={info.isLoading}
-    >
+    return <WidgetComponent title={messages.mainTitle}>
+        <LoadingWrapper isLoading={info.isLoading}>
+            <Kicia_v2
+                dataSelector={measureType}
+                title={measureType === CHART_MEASURE_REVENUE
+                    ? messages.revenueChartTitle
+                    : messages.soldChartTitle
+                }
+                unformattedData={info.periods}
+                ChartType={chartType}
+            />
+        </LoadingWrapper>
         <ColumnGappedList className="size-normal padding-zero">
             <ColumnGappedList className="size-zero">
                 <div class="chart-buttons-grid-container">
                     <ColumnGappedList class="minor-padding">
                         <span className="size-normal">{messages.measure.title}:</span>
                         <ColumnGappedList className="size-tiny">
-                            {getRadioButton(0, measureType, setMeasureType, messages.measure.obrot)}
-                            {getRadioButton(1, measureType, setMeasureType, messages.measure.sprzedaz)}
+                            {getRadioButton(CHART_MEASURE_REVENUE, measureType, setMeasureType, messages.measure.revenue)}
+                            {getRadioButton(CHART_MEASURE_SOLD, measureType, setMeasureType, messages.measure.sprzedaz)}
                         </ColumnGappedList>
                     </ColumnGappedList>
                     <ColumnGappedList class="minor-padding">
                         <span className="size-normal">{messages.timeFrame.title}:</span>
                         <ColumnGappedList className="size-tiny">
-                            {getRadioButton(0, timeFrame, setTimeFrame, messages.timeFrame.today)}
-                            {getRadioButton(1, timeFrame, setTimeFrame, messages.timeFrame.thisWeek)}
-                            {getRadioButton(2, timeFrame, setTimeFrame, messages.timeFrame.thisMonth)}
+                            {getRadioButton(CHART_DAY, timeFrame, setTimeFrame, messages.timeFrame.today)}
+                            {getRadioButton(CHART_WEEK, timeFrame, setTimeFrame, messages.timeFrame.thisWeek)}
+                            {getRadioButton(CHART_MONTH, timeFrame, setTimeFrame, messages.timeFrame.thisMonth)}
                         </ColumnGappedList>
                     </ColumnGappedList>
                     <ColumnGappedList class="minor-padding">
                         <span className="size-normal">{messages.chartType.title}:</span>
                         <ColumnGappedList className="size-tiny">
-                            {getRadioButton(0, chartType, setChartType, messages.chartType.slupkowy)}
-                            {getRadioButton(1, chartType, setChartType, messages.chartType.liniowy)}
+                            {getRadioButton(CHART_TYPE_BAR, chartType, setChartType, messages.chartType.bar)}
+                            {getRadioButton(CHART_TYPE_LINE, chartType, setChartType, messages.chartType.line)}
                         </ColumnGappedList>
                     </ColumnGappedList>
                 </div>
@@ -89,27 +104,6 @@ export const ChartWidget = () => {
                     </div>
                 </div></div>
             </ColumnGappedList>
-
-
-            {/* {info.isPresent ? <>
-
-                <QualityPane title={messages.cumulativeGradeTitle} rating={info.cumulativeGrade} />
-                <span className="size-medium bold align-self-center">{messages.worstAspectsTitle}</span>
-                {info.worstAspects?.map((a, index) => (
-                    <QualityPane key={index} title={a.name} rating={a.grade} />
-                ))}
-                <StdButtonAny tag={NavLink} to='/quality' className="size-large">
-                    {messages.gradesPresentButtonLabel}
-                </StdButtonAny>
-
-            </> : <>
-
-                <span className='size-normal align-self-center'>{messages.gradesNotPresentMessage}</span>
-                <StdButtonAny tag={NavLink} to='/quality' className="size-large">
-                    {messages.gradesNotPresentButtonLabel}
-                </StdButtonAny>
-
-            </>} */}
         </ColumnGappedList>
     </WidgetComponent>;
 }

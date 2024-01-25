@@ -1,48 +1,61 @@
-import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
-import { RowGappedList } from "../../common/LinearGappedList";
-import { ColumnEdgePane } from "components/widget/WidgetPane";
+import React from 'react';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    PointElement,
+    LineElement,
+} from 'chart.js';
+import { Bar, Line } from 'react-chartjs-2';
 
-const StarsRow = ({ rating, ...props }) => {
-    const stars = [];
-    while (stars.length < 5) {
-        if (rating >= 1) {
-            stars.push(<IoMdStar key={stars.length} />);
-            rating -= 1;
-        } else if (rating >= 0.5) {
-            stars.push(<IoMdStarHalf key={stars.length} />);
-            rating -= 0.5;
-        } else {
-            stars.push(<IoMdStarOutline key={stars.length} />);
-        }
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    PointElement,
+    LineElement,
+);
+
+export const [CHART_TYPE_BAR, CHART_TYPE_LINE] = [Bar, Line];
+
+export const Kicia_v2 = ({ unformattedData, dataSelector, title, ChartType }) => {
+    if (unformattedData === undefined || Object.keys(unformattedData).length === 0 || ChartType === undefined)
+        return <div></div>;
+    const data = {
+        labels: Object.values(Object.values(unformattedData)[0]).map(y => y.key),
+        datasets: Object.keys(unformattedData).map(periodName => {
+            return {
+                label: periodName,
+                data: Object.values(unformattedData[periodName]).map(y => y[dataSelector]),
+                backgroundColor: getRandomColor(),
+            }
+        }),
     }
-    return <RowGappedList className="size-normal" {...props}>{stars}</RowGappedList>;
-};
-
-export const QualityPane = ({ rating, title, ...props }) => {
-    return <ColumnEdgePane {...props}
-        top={<span className="size-medium bold">{title}</span>}
-        bottom={<StarsRow rating={rating} />}
-    />
+    const ss = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: title,
+            },
+        },
+    };
+    return <ChartType options={ss} data={data} />;
 }
 
-/*
-export const ProductsRankingPane = ({ name, img, subtextTop, subtextTopValue, subtextBottom, subtextBottomValue }) => {
-    const left = <ColumnGappedList className="size-zero">
-        <span className="size-medium bold">{name}</span>
-        <ColumnGappedList className="size-zero">
-            <RowGappedList className="size-zero">
-                <span className="size-small bold">{subtextTop}:</span>
-                <span className="size-small bold" style={{ marginLeft: "5px" }}>{subtextTopValue}</span>
-            </RowGappedList>
-            <RowGappedList className="size-zero">
-                <span className="size-small bold">{subtextBottom}:</span>
-                <span className="size-small bold" style={{ marginLeft: "5px" }}>{subtextBottomValue}</span>
-            </RowGappedList>
-        </ColumnGappedList>
-    </ColumnGappedList>;
-
-    const right = <img src={img} />;
-
-    return <RowEdgeWidgetPane left={left} right={right} />;
+function getRandomColor() {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+    return `rgba(${red}, ${green}, ${blue}, 0.5)`;
 }
-*/

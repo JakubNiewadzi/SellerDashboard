@@ -48,11 +48,11 @@ export const ProductsRankingWidget = () => {
                     subtextTop={messages.sold} subtextTopValue={o.sold}
                     subtextBottom={clickedButton == PRODUCTS_RANKING_LEAST_SOLD 
                         ? messages.uniqueViews 
-                        : messages.rotation
+                        : messages.revenue
                     }
                     subtextBottomValue={clickedButton == PRODUCTS_RANKING_LEAST_SOLD
                         ? o.uniqueViews 
-                        : o.rotation
+                        : o.revenue
                     }
                     img={o.img}
                 />))}

@@ -155,18 +155,18 @@ export const [PRODUCTS_RANKING_MOST_SOLD, PRODUCTS_RANKING_LEAST_SOLD] = [0, 1];
 
 export const getProductRanking = (username, account, type) => {
     const mostRare = [
-        {name: "Łopata", sold: 33, img: "/spinner.gif", uniqueViews: 121},
-        {name: "Grabie", sold: 13, img: "/spinner.gif",  uniqueViews: 539},
-        {name: "Motyka", sold: 43, img: "/spinner.gif",  uniqueViews: 442},
-        {name: "Szpadel", sold: 31, img: "/spinner.gif",  uniqueViews: 131},
-        {name: "Kilof", sold: 53, img: "/spinner.gif",  uniqueViews: 221},
+        { name: "Łopata", sold: 33, img: "/spinner.gif", uniqueViews: 121 },
+        { name: "Grabie", sold: 13, img: "/spinner.gif", uniqueViews: 539 },
+        { name: "Motyka", sold: 43, img: "/spinner.gif", uniqueViews: 442 },
+        { name: "Szpadel", sold: 31, img: "/spinner.gif", uniqueViews: 131 },
+        { name: "Kilof", sold: 53, img: "/spinner.gif", uniqueViews: 221 },
     ];
     const mostCommon = [
-        {name: "Łopata", sold: 33, img: "/spinner.gif", rotation: 32},
-        {name: "Grabie", sold: 13, img: "/spinner.gif", rotation: 12},
-        {name: "Motyka", sold: 43, img: "/spinner.gif", rotation: 51},
-        {name: "Szpadel", sold: 31, img: "/spinner.gif", rotation: 11},
-        {name: "Kilof", sold: 53, img: "/spinner.gif", rotation: 12},
+        { name: "Łopata", sold: 33, img: "/spinner.gif", revenue: 32 },
+        { name: "Grabie", sold: 13, img: "/spinner.gif", revenue: 12 },
+        { name: "Motyka", sold: 43, img: "/spinner.gif", revenue: 51 },
+        { name: "Szpadel", sold: 31, img: "/spinner.gif", revenue: 11 },
+        { name: "Kilof", sold: 53, img: "/spinner.gif", revenue: 12 },
     ];
     return delayedResponse(() => {
         switch (true) {
@@ -182,3 +182,51 @@ export const getProductRanking = (username, account, type) => {
         }
     });
 };
+
+
+export const [CHART_MEASURE_SOLD, CHART_MEASURE_REVENUE] = ["sold", "revenue"];
+export const [CHART_MONTH, CHART_WEEK, CHART_DAY] = ["byMonth", "byWeek", "byDay"];
+
+export const getChartData = (_username, _account, period, timeFrame) => {
+    const data = [];
+    if (timeFrame == CHART_MONTH) {
+        for (let week = 1; week <= 4; week++) {
+            data.push({
+                key: "Tydzień " + week,
+                revenue: Math.floor(Math.random() * (Math.abs(3 - week)+1) * 35),
+                sold: Math.floor(Math.random() * (Math.abs(3 - week)+1) * 25),
+            });
+        }
+    } else if (timeFrame == CHART_WEEK) {
+        for (let day = 1; day <= 7; day++) {
+            data.push({
+                key: [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                ][day - 1],
+                revenue: Math.floor(Math.random() * (Math.abs(1 - day)+1) * 35),
+                sold: Math.floor(Math.random() * (Math.abs(1 - day)+1) * 25),
+            });
+        }
+    } else if (timeFrame == CHART_DAY) {
+        for (let hour = 0; hour <= 23; hour++) {
+            data.push({
+                key: hour.toString().padStart(2, '0') + ":00",
+                revenue: Math.floor(Math.random() * (Math.abs(2 - hour)+1) * 35),
+                sold: Math.floor(Math.random() * (Math.abs(2 - hour)+1) * 25),
+            });
+        }
+    }
+    return delayedResponse(() => {
+        return {
+            timeFrame: timeFrame,
+            period: period,
+            data: data,
+        };
+    });
+}
