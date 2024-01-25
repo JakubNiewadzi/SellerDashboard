@@ -1,4 +1,6 @@
-$primary: #06778D;
-$success: #001d1a;
+@import './colors.scss';
+
+$primary: $pallette-d;
+$success: $pallette-f;
 
 @import '~bootstrap/scss/bootstrap';

@@ -4,11 +4,10 @@ import 'typeface-lexend-deca';
 import 'typeface-noto-sans'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.css';
-import './styles/custom.scss'
 import './styles/colors.scss'
+import './styles/custom.scss'
 import './styles/sizes.scss'
 import './styles/alignment.scss'
-import './styles/NewApp.scss'
 import './components/widget/widget.scss'
 import './components/common/buttons.scss'
 import './components/widgets/widgets.scss'

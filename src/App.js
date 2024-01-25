@@ -1,4 +1,4 @@
-import './styles/App.css';
+import './styles/App.scss';
 import { Route, Routes } from "react-router-dom";
 import { LoginPage } from "./pages/LoginPage";
 import { DashboardPage } from "./pages/DashboardPage";
@@ -34,16 +34,3 @@ function App() {
 }
 
 export default App;
-
-
-// export const ProtexctedRoute = () => {
-//     const auth = useSelector(state => state.auth.isLoggedIn)
-//     const isDark = useSelector(state => state.context.isDark)
-//     if (!auth) {
-//         return <Navigate to="/login" />
-//     }
-//     return <div className={`app ${isDark ? 'light' : 'light'}`}>
-//         <SidebarComponent />
-//         <Outlet />
-//     </div>
-// }
