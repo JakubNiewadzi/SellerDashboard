@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { StdButtonAny } from "components/common/StdButton";
 import { useEffect, useState } from "react";
 import { CHART_MONTH, CHART_WEEK, CHART_DAY, CHART_MEASURE_SOLD, CHART_MEASURE_REVENUE } from "fakebackend/FakeBackend";
-import { addPeriodToChart } from "services/state/slices/chartSlice";
+import { addPeriodToChart, clearChartInfo, clearPreviousPeriod, updateCurrentPeriod, updatePreviousPeriod } from "services/state/slices/chartSlice";
 import { LoadingWrapper } from "components/common/LoadingWrapper";
 
 export const ChartWidget = () => {
@@ -19,8 +19,17 @@ export const ChartWidget = () => {
     const user = useSelector(state => state.auth)
 
     useEffect(() => {
-        dispatch(addPeriodToChart(user.user, user.currentAccount, messages.currentPeriod, timeFrame));
+        dispatch(updateCurrentPeriod(user.user, user.currentAccount, messages.currentPeriod, timeFrame));
+        setExtraDataSeries(false);
     }, [timeFrame]);
+
+    useEffect(() => {
+        if(extraDataSeries) {
+            dispatch(updatePreviousPeriod(user.user, user.currentAccount, messages.currentPeriod, timeFrame));
+        } else {
+            dispatch(clearPreviousPeriod())
+        }
+    }, [extraDataSeries]);
 
     const getRadioButton = (type, selectedType, setter, message) => {
         return <StdButtonAny
@@ -29,6 +38,10 @@ export const ChartWidget = () => {
             onClick={() => setter(type)}
         >{message}</StdButtonAny>;
     }
+
+    const dataEhh = {};
+    dataEhh[messages.currentPeriod] = info.currentPeriod;
+    dataEhh[messages.previousPeriod] = info.currentPeriod;
 
     return <WidgetComponent title={messages.mainTitle}>
         <div className="chart-wrapper">
@@ -39,7 +52,8 @@ export const ChartWidget = () => {
                         ? messages.revenueChartTitle
                         : messages.soldChartTitle
                     }
-                    unformattedData={info.periods}
+                    mainData={{[messages.currentPeriod]: info.currentPeriod}}
+                    secondaryData={{[messages.previousPeriod]: info.previousPeriod}}
                     ChartType={chartType}
                 />
             </LoadingWrapper>
@@ -51,7 +65,7 @@ export const ChartWidget = () => {
                         <span className="size-normal">{messages.measure.title}:</span>
                         <ColumnGappedList className="size-tiny">
                             {getRadioButton(CHART_MEASURE_REVENUE, measureType, setMeasureType, messages.measure.revenue)}
-                            {getRadioButton(CHART_MEASURE_SOLD, measureType, setMeasureType, messages.measure.sprzedaz)}
+                            {getRadioButton(CHART_MEASURE_SOLD, measureType, setMeasureType, messages.measure.sales)}
                         </ColumnGappedList>
                     </ColumnGappedList>
                     <ColumnGappedList class="minor-padding">

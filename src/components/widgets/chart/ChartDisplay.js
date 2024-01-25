@@ -25,16 +25,31 @@ ChartJS.register(
 
 export const [CHART_TYPE_BAR, CHART_TYPE_LINE] = [Bar, Line];
 
-export const ChartDisplay = ({ unformattedData, dataSelector, title, ChartType }) => {
-    if (unformattedData === undefined || Object.keys(unformattedData).length === 0 || ChartType === undefined)
+export const ChartDisplay = ({ mainData, secondaryData, dataSelector, title, ChartType }) => {
+    if (mainData === undefined || ChartType === undefined)
         return <div></div>;
+    if (secondaryData === undefined)
+        return secondaryData = {};
+    const unformattedData = { ...mainData, ...secondaryData };
+    const nonEmptyData = Object.fromEntries(
+        Object.entries(unformattedData).filter(([_, v]) => Object.keys(v).length > 0)
+    );
+    if (Object.keys(nonEmptyData).length === 0)
+        return <div></div>;
+    const colors = ["#84D5FF", "orange", "green", "yellow"];
+    let nextColorIndex = 0;
+    const nextColor = () => {
+        return colors[Math.min(colors.length, nextColorIndex++)];
+    }
     const data = {
-        labels: Object.values(Object.values(unformattedData)[0]).map(y => y.key),
-        datasets: Object.keys(unformattedData).map(periodName => {
+        labels: Object.values(Object.values(nonEmptyData)[0]).map(y => y.key),
+        datasets: Object.keys(nonEmptyData).map(periodName => {
+            const currentColor = nextColor();
             return {
                 label: periodName,
-                data: Object.values(unformattedData[periodName]).map(y => y[dataSelector]),
-                backgroundColor: getRandomColor(),
+                data: Object.values(nonEmptyData[periodName]).map(y => y[dataSelector]),
+                backgroundColor: currentColor,
+                borderColor: currentColor,
             }
         }),
     }
@@ -43,19 +58,18 @@ export const ChartDisplay = ({ unformattedData, dataSelector, title, ChartType }
         plugins: {
             legend: {
                 position: 'top',
+                labels: { color: '#888' },
             },
             title: {
                 display: true,
                 text: title,
             },
         },
+        scales: {
+            y: { ticks: { color: '#888' } },
+            x: { ticks: { color: '#888' } },
+        },
     };
     return <ChartType options={options} data={data} />;
 }
 
-function getRandomColor() {
-    const red = Math.floor(Math.random() * 256);
-    const green = Math.floor(Math.random() * 256);
-    const blue = Math.floor(Math.random() * 256);
-    return `rgba(${red}, ${green}, ${blue}, 0.5)`;
-}

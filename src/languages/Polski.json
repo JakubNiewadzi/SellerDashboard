@@ -47,7 +47,7 @@
     "measure": {
         "title": "Miara",
         "revenue": "Obrót",
-        "sprzedaz": "Sprzedaż"
+        "sales": "Sprzedaż"
     },
     "timeFrame": {
         "title": "Zakres czasu",

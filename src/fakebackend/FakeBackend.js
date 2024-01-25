@@ -183,7 +183,7 @@ export const getProductRanking = (username, account, type) => {
     });
 };
 
-
+export const [CHART_CURRENT_PERIOD, CHART_PREVIOUS_PERIOD] = ["current", "previous"];
 export const [CHART_MEASURE_SOLD, CHART_MEASURE_REVENUE] = ["sold", "revenue"];
 export const [CHART_MONTH, CHART_WEEK, CHART_DAY] = ["byMonth", "byWeek", "byDay"];
 
