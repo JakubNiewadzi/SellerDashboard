@@ -3,9 +3,9 @@ import { ColumnGappedList } from "../../common/LinearGappedList";
 import { RowEdgeWidgetPane } from "../../widget/WidgetPane";
 
 export const OpinionPane = ({ isPositive, from, opinion }) => {
-    const left = <ColumnGappedList className="size-zero">
-        <span className="size-medium">{from}</span>
-        <span className="size-small">{opinion}</span>
+    const left = <ColumnGappedList className="size-zero" style={{width: "75%"}}>
+        <span className="size-medium bold">{from}</span>
+        <p className="size-small two-line-ellipsis">{opinion}{opinion}{opinion}{opinion}{opinion}{opinion}{opinion}</p>
     </ColumnGappedList>;
 
     const right = <div className='thumb-container'>
@@ -14,18 +14,3 @@ export const OpinionPane = ({ isPositive, from, opinion }) => {
 
     return <RowEdgeWidgetPane left={left} right={right} />;
 }
-
-/*
-
-export const OrderPane = ({ name, count, nav, ...props }) => {
-    const navigate = useNavigate();
-    return <RowEdgeWidgetPane
-        onClick={navigate(nav)}
-        className="order-pane cursor-pointer flex-align-center"
-        left={<span className="size-medium">{name}</span>}
-        right={<span className="size-medium">{count}</span>}
-        {...props}
-    />;
-}
-
-*/

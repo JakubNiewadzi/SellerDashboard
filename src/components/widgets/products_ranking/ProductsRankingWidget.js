@@ -35,7 +35,7 @@ export const ProductsRankingWidget = () => {
 
     return <WidgetComponent
         title={messages.mainTitle} isLoading={info.isLoading} remainder={info.isPresent && <RowGappedList className="size-tiny">
-            <h5>{messages.frequency}</h5>
+            <span className="size-small center">{messages.frequency}</span>
             {getRadioButton(PRODUCTS_RANKING_MOST_SOLD, messages.mostSold)}
             {getRadioButton(PRODUCTS_RANKING_LEAST_SOLD, messages.leastSold)}
         </RowGappedList>}

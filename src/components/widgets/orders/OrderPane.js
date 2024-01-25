@@ -3,11 +3,12 @@ import { RowEdgeWidgetPane } from "components/widget/WidgetPane";
 
 export const OrderPane = ({ name, count, nav, ...props }) => {
     const navigate = useNavigate();
+    const navigateThunk = () => {navigate(nav)}//ten thunk musi być!!
     return <RowEdgeWidgetPane
-        onClick={navigate(nav)}
+        onClick={navigateThunk}
         className="order-pane cursor-pointer flex-align-center"
-        left={<span className="size-medium">{name}</span>}
-        right={<span className="size-medium">{count}</span>}
+        left={<span className="bold size-medium">{name}</span>}
+        right={<span className="size-medium bold">{count}</span>}
         {...props}
     />;
 }

@@ -2,19 +2,21 @@ import { ColumnGappedList, RowGappedList } from "../../common/LinearGappedList";
 import { RowEdgeWidgetPane } from "../../widget/WidgetPane";
 
 export const ProductsRankingPane = ({ name, img, subtextTop, subtextTopValue, subtextBottom, subtextBottomValue }) => {
-    const left = <ColumnGappedList className="size-tiny">
-        <h3>{name}</h3>
+    const left = <ColumnGappedList className="size-zero">
+        <span className="size-medium bold">{name}</span>
         <ColumnGappedList className="size-zero">
             <RowGappedList className="size-zero">
-                <h5>{subtextTop}:</h5>
-                <h5 style={{ marginLeft: "5px" }}>{subtextTopValue}</h5>
+                <span className="size-small bold">{subtextTop}:</span>
+                <span className="size-small bold" style={{ marginLeft: "5px" }}>{subtextTopValue}</span>
             </RowGappedList>
             <RowGappedList className="size-zero">
-                <h5>{subtextBottom}:</h5>
-                <h5 style={{ marginLeft: "5px" }}>{subtextBottomValue}</h5>
+                <span className="size-small bold">{subtextBottom}:</span>
+                <span className="size-small bold" style={{ marginLeft: "5px" }}>{subtextBottomValue}</span>
             </RowGappedList>
         </ColumnGappedList>
     </ColumnGappedList>;
+
     const right = <img src={img} />;
+
     return <RowEdgeWidgetPane left={left} right={right} />;
 }
