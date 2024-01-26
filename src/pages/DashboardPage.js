@@ -12,10 +12,10 @@ export const DashboardPage = () => {
                 <ProductsRankingWidget />
             </div>
             <div>
+                <ChartWidget />
                 <OpinionsWidget />
             </div>
             <div>
-                <ChartWidget />
                 <QualityWidget />
             </div>
         </div>

@@ -7,7 +7,7 @@ export const ProtectedRoute = () => {
     if (!auth) {
         return <Navigate to="/login" />
     }
-    return <div className="app">
+    return <div className="app height-100percent">
         <SidebarComponent />
         <Outlet />
     </div>
