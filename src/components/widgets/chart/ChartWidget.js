@@ -56,15 +56,15 @@ export const ChartWidget = () => {
         </div>
         <ColumnGappedList className="size-normal padding-zero">
             <ColumnGappedList className="size-zero">
-                <div class="chart-buttons-grid-container">
-                    <ColumnGappedList class="minor-padding">
+                <div className="chart-buttons-grid-container">
+                    <ColumnGappedList className="minor-padding">
                         <span className="size-normal">{messages.measure.title}:</span>
                         <ColumnGappedList className="size-tiny">
                             {getRadioButton(CHART_MEASURE_REVENUE, measureType, setMeasureType, messages.measure.revenue)}
                             {getRadioButton(CHART_MEASURE_SOLD, measureType, setMeasureType, messages.measure.sales)}
                         </ColumnGappedList>
                     </ColumnGappedList>
-                    <ColumnGappedList class="minor-padding">
+                    <ColumnGappedList className="minor-padding">
                         <span className="size-normal">{messages.timeFrame.title}:</span>
                         <ColumnGappedList className="size-tiny">
                             {getRadioButton(CHART_DAY, timeFrame, setTimeFrame, messages.timeFrame.today)}
@@ -72,7 +72,7 @@ export const ChartWidget = () => {
                             {getRadioButton(CHART_MONTH, timeFrame, setTimeFrame, messages.timeFrame.thisMonth)}
                         </ColumnGappedList>
                     </ColumnGappedList>
-                    <ColumnGappedList class="minor-padding">
+                    <ColumnGappedList className="minor-padding">
                         <span className="size-normal">{messages.chartType.title}:</span>
                         <ColumnGappedList className="size-tiny">
                             {getRadioButton(CHART_TYPE_BAR, chartType, setChartType, messages.chartType.bar)}

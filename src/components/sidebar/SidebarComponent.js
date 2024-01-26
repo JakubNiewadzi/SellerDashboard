@@ -37,6 +37,7 @@ export const SidebarComponent = () => {
             <CiLight />
             <FormGroup switch style={{ justifyContent: "center", display: "flex" }}>
                 <Input
+                    onChange={() => { }}
                     type='switch'
                     checked={isDark}
                     onClick={() => dispatch(switchTheme())}
@@ -56,9 +57,13 @@ export const SidebarComponent = () => {
             dispatch(setLanguage(LANGUAGES.filter(x => x.name === language)[0]))
         }
 
-        const itemsList = items.map(item => {
-            return <DropdownItem value={item} onClick={type === 'account' ?
-                () => dispatch(changeAccount(item)) : () => changeLanguage(item)}>{item}</DropdownItem>
+        const itemsList = items.map((item, index) => {
+            return <DropdownItem value={item} key={index}
+                onClick={type === 'account'
+                    ? () => dispatch(changeAccount(item))
+                    : () => changeLanguage(item)
+                }
+            >{item}</DropdownItem>
         })
 
         return (<Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
