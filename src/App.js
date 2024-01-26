@@ -2,13 +2,15 @@ import './styles/App.scss';
 import { Route, Routes } from "react-router-dom";
 import { LoginPage } from "./pages/LoginPage";
 import { DashboardPage } from "./pages/DashboardPage";
-import { OpinionsPage } from "./pages/OpinionsPage";
-import { OrdersPage } from "./pages/OrdersPage";
-import { ProductsPage } from "./pages/ProductsPage";
-import { QualityOfSellerPage } from "./pages/QualityOfSellerPage";
+import { OpinionsPage } from "./pages/phony/OpinionsPage";
+import { OrdersRoutes } from "./pages/phony/OrdersPage";
+import { ProductsPage } from "./pages/phony/ProductsPage";
+import { QualityPage } from "./pages/phony/QualityPage";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { IconContext } from "react-icons";
 import { useSelector } from "react-redux";
+import { SellProductPage } from 'pages/phony/SellProductPage';
+import { PromotePage } from 'pages/phony/PromotePage';
 
 function App() {
     const isDark = useSelector(state => state.context.isDark);
@@ -22,9 +24,11 @@ function App() {
                     <Route element={<ProtectedRoute />}>
                         <Route index element={<DashboardPage />} />
                         <Route path='/opinions' element={<OpinionsPage />} />
-                        <Route path='/orders' element={<OrdersPage />} />
+                        <Route path="/orders/*" element={<OrdersRoutes />} />
                         <Route path='/products' element={<ProductsPage />} />
-                        <Route path='/qualityofseller' element={<QualityOfSellerPage />} />
+                        <Route path='/quality' element={<QualityPage />} />
+                        <Route path='/sell_product' element={<SellProductPage />} />
+                        <Route path='/promote' element={<PromotePage />} />
                     </Route>
                 </Routes>
             </div>

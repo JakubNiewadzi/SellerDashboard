@@ -31,11 +31,10 @@ export const QualityWidget = () => {
                 <StdButtonAny tag={NavLink} to='/quality' className="size-large">
                     {messages.gradesPresentButtonLabel}
                 </StdButtonAny>
-
             </> : <>
 
                 <span className='size-normal align-self-center'>{messages.gradesNotPresentMessage}</span>
-                <StdButtonAny tag={NavLink} to='/quality' className="size-large">
+                <StdButtonAny tag={NavLink} to='/sell_product' className="size-large">
                     {messages.gradesNotPresentButtonLabel}
                 </StdButtonAny>
 

@@ -22,12 +22,12 @@ export const OrdersWidget = () => {
     >
         <ColumnGappedList className="size-normal padding-zero">
             {info.isPresent ? <>
-                <OrderPane name={messages.notPaid} count={info.notPaid} />
-                <OrderPane name={messages.notSent} count={info.notSent} />
-                <OrderPane name={messages.returned} count={info.returned} />
+                <OrderPane nav="/orders/not_paid" name={messages.notPaid} count={info.notPaid} />
+                <OrderPane nav="/orders/not_sent" name={messages.notSent} count={info.notSent} />
+                <OrderPane nav="/orders/returned" name={messages.returned} count={info.returned} />
             </> : <>
                 <span className='size-normal align-self-center'>{messages.ordersNotPresentMessage}</span>
-                <StdButtonAny tag={NavLink} to='/quality' className="size-large">
+                <StdButtonAny tag={NavLink} to='/promote' className="size-large">
                     {messages.ordersNotPresentButtonLabel}
                 </StdButtonAny>
             </>}
