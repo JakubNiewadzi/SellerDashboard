@@ -35,3 +35,9 @@
 .cursor-pointer {
     cursor: pointer;
 }
+
+.login-page-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0px !important;
+}

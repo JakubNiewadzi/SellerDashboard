@@ -48,8 +48,8 @@ export const LoginPage = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </FormGroup>
-            <FormGroup>
-                <StdButtonAny type='submit' className="size-large">{messages.signin}</StdButtonAny>
+            <FormGroup className="login-page-button-wrapper">
+                <StdButtonAny type='submit' className="size-large ">{messages.signin}</StdButtonAny>
             </FormGroup>
         </Form>
     </div>;
