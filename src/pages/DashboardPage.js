@@ -6,10 +6,18 @@ import { ChartWidget } from "components/widgets/chart/ChartWidget";
 
 export const DashboardPage = () => {
     return <div className="Dashboard-page">
-        <ChartWidget />
-        <QualityWidget />
-        <ProductsRankingWidget />
-        <OpinionsWidget />
-        <OrdersWidget />
+        <div className="dashboard-grid-container">
+            <div>
+                <OrdersWidget />
+                <ProductsRankingWidget />
+            </div>
+            <div>
+                <OpinionsWidget />
+            </div>
+            <div>
+                <ChartWidget />
+                <QualityWidget />
+            </div>
+        </div>
     </div>
 }

@@ -43,7 +43,7 @@
         "noProductsToShow": "No offers to display"
     },
     "chartWidget": {
-        "mainTitle": "Orders",
+        "mainTitle": "Orders statistics",
         "measure": {
             "title": "Measure",
             "revenue": "Revenue",

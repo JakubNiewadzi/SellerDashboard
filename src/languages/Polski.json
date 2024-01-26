@@ -1,70 +1,69 @@
 {
-  "dashboard": "Panel",
-  "logout": "Wyloguj się",
-  "loginPage": {
-    "username": "Nazwa użytkownika",
-    "usernamePh": "Twoja nazwa użytkownika",
-    "password": "Hasło",
-    "passwordPh": "Twoje hasło",
-    "signin": "Zaloguj się"
-  },
-  "opinionsWidget": {
-    "mainTitle": "Opinie kupujących",
-    "moreOpinionsButtonLabel": "Więcej opinii",
-    "noOpinionsPresentMessage": "Nie znaleziono żadnych opinii",
-    "positive": "Pozytywne",
-    "negative": "Negatywne",
-    "all": "Wszystkie"
-  },
-  "ordersWidget": {
-    "mainTitle": "Zamówienia",
-    "notPaid": "Nieopłacone",
-    "notSent": "Niewysłane",
-    "returned": "Zwrócone",
-    "ordersNotPresentButtonLabel": "Wypromuj swoje oferty",
-    "ordersNotPresentMessage": "Nie masz żadnych zamówień"
-  },
-  "qualityWidget": {
-    "mainTitle": "Jakość sprzedaży",
-    "cumulativeGradeTitle": "Jakość sprzedaży",
-    "worstAspectsTitle": "Aspekty z najgorszym wynikiem",
-    "gradesPresentButtonLabel": "Jakość sprzedaży",
-    "gradesNotPresentButtonLabel": "Wystaw produkt na sprzedaż",
-    "gradesNotPresentMessage": "Nie masz żadnych sprzedanych produktów"
-  },
-  "productsRankingWidget": {
-    "mainTitle": "Ranking ofert",
-    "frequency": "Częstość sprzedawania",
-    "mostSold": "Najczęstsza",
-    "leastSold": "Najrzadsza",
-    "sold": "Sprzedano",
-    "revenue": "Obrót",
-    "uniqueViews": "Unikalnych wyświetleń",
-    "noProductsToShow": "Brak ofert do wyświetlenia"
-  },
-  "chartWidget": {
-    "mainTitle": "Zamówienia",
-    "measure": {
-        "title": "Miara",
+    "dashboard": "Panel",
+    "logout": "Wyloguj się",
+    "loginPage": {
+        "username": "Nazwa użytkownika",
+        "usernamePh": "Twoja nazwa użytkownika",
+        "password": "Hasło",
+        "passwordPh": "Twoje hasło",
+        "signin": "Zaloguj się"
+    },
+    "opinionsWidget": {
+        "mainTitle": "Opinie kupujących",
+        "moreOpinionsButtonLabel": "Więcej opinii",
+        "noOpinionsPresentMessage": "Nie znaleziono żadnych opinii",
+        "positive": "Pozytywne",
+        "negative": "Negatywne",
+        "all": "Wszystkie"
+    },
+    "ordersWidget": {
+        "mainTitle": "Zamówienia",
+        "notPaid": "Nieopłacone",
+        "notSent": "Niewysłane",
+        "returned": "Zwrócone",
+        "ordersNotPresentButtonLabel": "Wypromuj swoje oferty",
+        "ordersNotPresentMessage": "Nie masz żadnych zamówień"
+    },
+    "qualityWidget": {
+        "mainTitle": "Jakość sprzedaży",
+        "cumulativeGradeTitle": "Jakość sprzedaży",
+        "worstAspectsTitle": "Aspekty z najgorszym wynikiem",
+        "gradesPresentButtonLabel": "Jakość sprzedaży",
+        "gradesNotPresentButtonLabel": "Wystaw produkt na sprzedaż",
+        "gradesNotPresentMessage": "Nie masz żadnych sprzedanych produktów"
+    },
+    "productsRankingWidget": {
+        "mainTitle": "Ranking ofert",
+        "frequency": "Częstość sprzedawania",
+        "mostSold": "Najczęstsza",
+        "leastSold": "Najrzadsza",
+        "sold": "Sprzedano",
         "revenue": "Obrót",
-        "sales": "Sprzedaż"
+        "uniqueViews": "Unikalnych wyświetleń",
+        "noProductsToShow": "Brak ofert do wyświetlenia"
     },
-    "timeFrame": {
-        "title": "Zakres czasu",
-        "today": "Dziś",
-        "thisWeek": "Ten tydzień",
-        "thisMonth": "Ten miesiąc"
-    },
-    "chartType": {
-        "title": "Typ wykresu",
-        "bar": "Słupkowy",
-        "line": "Liniowy"
-    },
-    "addDataSeriesButtonLabel": "Dodatkowa seria danych",
-    "revenueChartTitle": "Wykaz obrotu",
-    "soldChartTitle": "Wykaz sprzedaży",
-    "currentPeriod": "Obecny okres",
-    "previousPeriod": "Poprzedni okres"
-  }
+    "chartWidget": {
+        "mainTitle": "Liczba zamówień",
+        "measure": {
+            "title": "Miara",
+            "revenue": "Obrót",
+            "sales": "Sprzedaż"
+        },
+        "timeFrame": {
+            "title": "Zakres czasu",
+            "today": "Dziś",
+            "thisWeek": "Ten tydzień",
+            "thisMonth": "Ten miesiąc"
+        },
+        "chartType": {
+            "title": "Typ wykresu",
+            "bar": "Słupkowy",
+            "line": "Liniowy"
+        },
+        "addDataSeriesButtonLabel": "Dodatkowa seria danych",
+        "revenueChartTitle": "Wykaz obrotu",
+        "soldChartTitle": "Wykaz sprzedaży",
+        "currentPeriod": "Obecny okres",
+        "previousPeriod": "Poprzedni okres"
+    }
 }
-

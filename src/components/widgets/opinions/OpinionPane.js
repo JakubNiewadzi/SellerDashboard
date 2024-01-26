@@ -5,7 +5,7 @@ import { RowEdgeWidgetPane } from "../../widget/WidgetPane";
 export const OpinionPane = ({ isPositive, from, opinion }) => {
     const left = <ColumnGappedList className="size-zero" style={{width: "75%"}}>
         <span className="size-medium bold">{from}</span>
-        <p className="size-small two-line-ellipsis">{opinion}{opinion}{opinion}{opinion}{opinion}{opinion}{opinion}</p>
+        <p className="size-small two-line-ellipsis">{opinion}</p>
     </ColumnGappedList>;
 
     const right = <div className='thumb-container'>
