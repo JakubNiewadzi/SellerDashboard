@@ -7,10 +7,8 @@ import { useState } from "react";
 import { PiUserSwitchBold } from "react-icons/pi";
 import { changeAccount, logout } from "../../services/state/slices/authSlice";
 import { IoLanguage } from "react-icons/io5";
-import { languages, users } from "../../fakebackend/FakeBackend";
-import { changeTheme, setLanguage } from "../../services/state/slices/contextSlice";
-import Polski from '../../languages/Polski.json';
-import English from '../../languages/English.json';
+import { LANGUAGES, users } from "../../fakebackend/FakeBackend";
+import { setLanguage, switchTheme } from "../../services/state/slices/contextSlice";
 import { useNavigate } from "react-router-dom";
 
 export const SidebarComponent = () => {
@@ -27,10 +25,10 @@ export const SidebarComponent = () => {
     const UserInfo = () => {
         return <>
             <div className='UserInfo'>
-                <span style={{ marginRight: '6px' }}>{user}</span>
+                <span style={{ marginRight: '6px' }} className="size-normal">{user}</span>
                 <FaUserCircle height='32' width='32' />
             </div>
-            <hr className={`horizontal-line ${isDark ? 'dark' : 'light'}`} />
+            <hr className="horizontal-line" />
         </>
     }
 
@@ -41,7 +39,7 @@ export const SidebarComponent = () => {
                 <Input
                     type='switch'
                     checked={isDark}
-                    onClick={() => dispatch(changeTheme())}
+                    onClick={() => dispatch(switchTheme())}
                     color='success' />
             </FormGroup>
             <CiDark />
@@ -55,11 +53,7 @@ export const SidebarComponent = () => {
             setDropdownOpen((prevState) => !prevState)
         };
         const changeLanguage = (language) => {
-            if (language === 'English') {
-                dispatch(setLanguage({ language: language, translation: English }))
-            } else {
-                dispatch(setLanguage({ language: language, translation: Polski }))
-            }
+            dispatch(setLanguage(LANGUAGES.filter(x => x.name === language)[0]))
         }
 
         const itemsList = items.map(item => {
@@ -71,7 +65,7 @@ export const SidebarComponent = () => {
             <DropdownToggle tag="span" data-toggle="dropdown" aria-expanded={dropdownOpen}
                 className='SidebarElement'>
                 {icon}
-                <span style={{ marginLeft: '15px' }}>
+                <span style={{ marginLeft: '15px' }} className="size-normal">
                     {text}
                 </span>
             </DropdownToggle>
@@ -90,11 +84,11 @@ export const SidebarComponent = () => {
         </div>);
     }
 
-    return <div className={`Sidebar ${isDark ? 'dark' : 'light'}`}>
+    return <div className="Sidebar">
         <UserInfo />
         <SidebarElement onClick={() => navigate("/")} text={messages['dashboard']} icon={<MdDashboard />} />
         <SidebarElementDropdown text={currentAccount} icon={<PiUserSwitchBold />} items={accounts} type='account' />
-        <SidebarElementDropdown text={language} icon={<IoLanguage />} items={languages} type='language' />
+        <SidebarElementDropdown text={language} icon={<IoLanguage />} items={LANGUAGES.map(x => x.name)} type='language' />
         <SidebarElement text={messages['logout']} icon={<MdLogout />} onClick={() => dispatch(logout())} />
         <SwitchThemeButton />
     </div>

@@ -1,27 +1,25 @@
-import {languages} from "../../../fakebackend/FakeBackend";
-import {createSlice} from "@reduxjs/toolkit";
-import Polski from '../../../languages/Polski.json';
+import { createSlice } from "@reduxjs/toolkit";
+import { LANGUAGES } from "fakebackend/FakeBackend";
 
 const initialState = {
-    language: languages[0],
     isDark: false,
-    translation: Polski
+    language: LANGUAGES[0].name,
+    translation: LANGUAGES[0].messages
 }
 
 const contextSlice = createSlice({
     name: 'context',
     initialState,
     reducers: {
-        changeTheme: (state) => {
+        switchTheme: (state) => {
             state.isDark = !state.isDark
         },
         setLanguage: (state, action) => {
-            state.language = action.payload.language
-            state.translation = action.payload.translation
+            state.language = action.payload.name
+            state.translation = action.payload.messages
         }
     }
 })
 
-export const {changeTheme,
-    setLanguage} = contextSlice.actions
+export const { switchTheme, setLanguage } = contextSlice.actions
 export default contextSlice.reducer

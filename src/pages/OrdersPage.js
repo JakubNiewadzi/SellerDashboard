@@ -1,3 +1,1 @@
-export const OrdersPage = () => {
-    "Zamówieniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-}
+export const OrdersPage = () => 'Zamówienia :>'

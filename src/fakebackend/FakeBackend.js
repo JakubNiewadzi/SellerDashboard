@@ -1,3 +1,6 @@
+import Polski from '../languages/Polski.json';
+import English from '../languages/English.json';
+
 export const users = {
     "Marek": {
         password: "marek12",
@@ -9,7 +12,12 @@ export const users = {
     }
 }
 
-export const languages = ["Polski", "English"]
+export const LANGUAGES = [
+    { name: "Polski", messages: Polski },
+    { name: "English", messages: English },
+]
+
+// export const languages = ["Polski", "English"]
 
 const delayedResponse = (thunk) => {
     return new Promise((resolve) => {
@@ -193,8 +201,8 @@ export const getChartData = (_username, _account, period, timeFrame) => {
         for (let week = 1; week <= 4; week++) {
             data.push({
                 key: "Tydzień " + week,
-                revenue: Math.floor(Math.random() * (Math.abs(3 - week)+1) * 35),
-                sold: Math.floor(Math.random() * (Math.abs(3 - week)+1) * 25),
+                revenue: Math.floor(Math.random() * (Math.abs(3 - week) + 1) * 35),
+                sold: Math.floor(Math.random() * (Math.abs(3 - week) + 1) * 25),
             });
         }
     } else if (timeFrame == CHART_WEEK) {
@@ -209,16 +217,16 @@ export const getChartData = (_username, _account, period, timeFrame) => {
                     "Saturday",
                     "Sunday"
                 ][day - 1],
-                revenue: Math.floor(Math.random() * (Math.abs(1 - day)+1) * 35),
-                sold: Math.floor(Math.random() * (Math.abs(1 - day)+1) * 25),
+                revenue: Math.floor(Math.random() * (Math.abs(1 - day) + 1) * 35),
+                sold: Math.floor(Math.random() * (Math.abs(1 - day) + 1) * 25),
             });
         }
     } else if (timeFrame == CHART_DAY) {
         for (let hour = 0; hour <= 23; hour++) {
             data.push({
                 key: hour.toString().padStart(2, '0') + ":00",
-                revenue: Math.floor(Math.random() * (Math.abs(2 - hour)+1) * 35),
-                sold: Math.floor(Math.random() * (Math.abs(2 - hour)+1) * 25),
+                revenue: Math.floor(Math.random() * (Math.abs(2 - hour) + 1) * 35),
+                sold: Math.floor(Math.random() * (Math.abs(2 - hour) + 1) * 25),
             });
         }
     }

@@ -1,3 +1,1 @@
-export const QualityOfSellerPage = () => {
-    return <div>Siema</div>
-}
+export const QualityOfSellerPage = () => 'Jakość sprzedawcy :>'

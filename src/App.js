@@ -11,7 +11,6 @@ import { IconContext } from "react-icons";
 import { useSelector } from "react-redux";
 
 function App() {
-
     const isDark = useSelector(state => state.context.isDark);
     const iconColor = isDark ? '#c1c1c1' : '#001d1a'
     const themeClassName = isDark ? 'dark' : 'light';
