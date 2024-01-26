@@ -1,0 +1,48 @@
+@import './colors.scss';
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 16px;
+    @include themeColor($text-default-light, $text-default-dark);
+    @include themeBackground($background-light, $background-dark);
+}
+
+.Dashboard-page {
+    flex-wrap: wrap;
+    display: flex;
+    flex: 1;
+    align-items: baseline;
+}
+
+.page-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.form {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    width: 100%;
+    padding: 15px;
+    @include themeBackground($form-light, $form-dark);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.login-page-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0px !important;
+}
+
+.dashboard-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

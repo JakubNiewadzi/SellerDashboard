@@ -1,0 +1,81 @@
+@function generateTintedColor($baseColor, $frac) {
+    @return mix($baseColor, if($frac > 0, white, black), abs($frac));
+}
+
+@mixin themeRule($selector, $ruleName, $light, $dark, $tint: null) {
+    #{$selector} {
+        #{$ruleName}: $light;
+    }
+
+    .dark #{$selector} {
+        #{$ruleName}: $dark;
+    }
+
+    @if ($tint !=null) {
+        #{$selector} {
+            #{$ruleName}: generateTintedColor($light, -$tint);
+        }
+
+        .dark #{$selector} {
+            #{$ruleName}: generateTintedColor($dark, $tint);
+        }
+    }
+}
+
+@mixin themeBackground($light, $dark) {
+    @include themeRule('&', 'background-color', $light, $dark, null);
+}
+
+@mixin themeBackgroundHover($light, $dark) {
+    @include themeRule('&:hover', 'background-color', $light, $dark, 90%);
+}
+
+@mixin themeBackgroundActive($light, $dark) {
+    @include themeRule('&:active', 'background-color', $light, $dark, 80%);
+}
+
+@mixin themeBorderColor($light, $dark) {
+    @include themeRule('&:active', 'border-color', $light, $dark, 85%);
+}
+
+@mixin themeColor($light, $dark) {
+    @include themeRule('&', 'color', $light, $dark, null);
+}
+
+@mixin themeBorderColor($light, $dark) {
+    @include themeRule('&', 'border-color', $light, $dark, null);
+}
+
+$pallette-a: #84D5FF;
+$pallette-b: #0CD0FF;
+$pallette-c: #09A3C6;
+$pallette-d: #06778D;
+$pallette-e: #034A53;
+$pallette-f: #001D1A;
+
+$primary: $pallette-d;
+$success: $pallette-f;
+
+$primary-light: $pallette-d;
+$primary-dark: $pallette-d;
+
+$success-light: $pallette-f;
+$success-dark: $pallette-f;
+
+$widget-light: #fff;
+$widget-dark: #000;
+
+$widget-pane-light: $pallette-b;
+$widget-pane-dark: $pallette-e;
+
+$sidebar-light: white;
+$sidebar-dark: #0e0e0e;
+
+$background-light: #f6f6f6;
+$background-dark: #252525;
+
+$text-default-light: #000000;
+$text-default-dark: #d2d2d2;
+
+$form-light: white;
+$form-dark: #0e0e0e;

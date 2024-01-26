@@ -1,0 +1,1 @@
+export const PromotePage = () => 'Wypromuj swoje oferty :>'

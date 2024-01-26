@@ -1,0 +1,28 @@
+@import './../../styles/colors.scss';
+
+.std-widget {
+    //common
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    min-width: 450px;
+    max-width: 600px;
+    min-height: 300px;
+    padding: 18px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    @include themeBackground($widget-light, $widget-dark);
+
+    .Pane {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 76px;
+        border-radius: 4px;
+
+        @include themeBackground($widget-pane-light, $widget-pane-dark);
+        @include themeBackgroundHover($widget-pane-light, $widget-pane-dark);
+    }
+}

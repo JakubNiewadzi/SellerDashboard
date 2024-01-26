@@ -1,0 +1,70 @@
+{
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "loginPage": {
+        "username": "Username",
+        "usernamePh": "Your username",
+        "password": "Password",
+        "passwordPh": "Your password",
+        "signin": "Sign in"
+    },
+    "opinionsWidget": {
+        "mainTitle": "Buyer Opinions",
+        "moreOpinionsButtonLabel": "More opinions",
+        "noOpinionsPresentMessage": "No opinions found",
+        "positive": "Positive",
+        "negative": "Negative",
+        "all": "All"
+    },
+    "ordersWidget": {
+        "mainTitle": "Orders",
+        "notPaid": "Not Paid",
+        "notSent": "Not Sent",
+        "returned": "Returned",
+        "ordersNotPresentButtonLabel": "Promote your offers",
+        "ordersNotPresentMessage": "You have no orders"
+    },
+    "qualityWidget": {
+        "mainTitle": "Sales Quality",
+        "cumulativeGradeTitle": "Sales Quality",
+        "worstAspectsTitle": "Worst-Performing Aspects",
+        "gradesPresentButtonLabel": "Sales Quality",
+        "gradesNotPresentButtonLabel": "List a product for sale",
+        "gradesNotPresentMessage": "You have no sold products"
+    },
+    "productsRankingWidget": {
+        "mainTitle": "Offer Ranking",
+        "frequency": "Sales Frequency",
+        "mostSold": "Most Sold",
+        "leastSold": "Least Sold",
+        "sold": "Sold",
+        "revenue": "Revenue",
+        "uniqueViews": "Unique Views",
+        "noProductsToShow": "No offers to display"
+    },
+    "chartWidget": {
+        "mainTitle": "Orders statistics",
+        "measure": {
+            "title": "Measure",
+            "revenue": "Revenue",
+            "sales": "Sales"
+        },
+        "timeFrame": {
+            "title": "Time Frame",
+            "today": "Today",
+            "thisWeek": "This Week",
+            "thisMonth": "This Month"
+        },
+        "chartType": {
+            "title": "Chart Type",
+            "bar": "Bar",
+            "line": "Line"
+        },
+        "addDataSeriesButtonLabel": "Add Data Series",
+        "revenueChartTitle": "Revenue Chart",
+        "soldChartTitle": "Sales Chart",
+        "currentPeriod": "Current Period",
+        "previousPeriod": "Previous Period"
+    }
+}
+
