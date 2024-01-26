@@ -122,18 +122,18 @@ export const [PRODUCTS_RANKING_MOST_SOLD, PRODUCTS_RANKING_LEAST_SOLD] = [0, 1];
 
 export const getProductRanking = (username, account, type) => {
     const mostRare = [
-        { name: "Łopata", sold: 33, img: "/spinner.gif", uniqueViews: 121 },
-        { name: "Grabie", sold: 13, img: "/spinner.gif", uniqueViews: 539 },
-        { name: "Motyka", sold: 43, img: "/spinner.gif", uniqueViews: 442 },
-        { name: "Szpadel", sold: 31, img: "/spinner.gif", uniqueViews: 131 },
-        { name: "Kilof", sold: 53, img: "/spinner.gif", uniqueViews: 221 },
+        { name: "Łopata", sold: 33, img: "/łopata.jpg", uniqueViews: 121 },
+        { name: "Grabie", sold: 13, img: "/grabie.webp", uniqueViews: 539 },
+        { name: "Motyka", sold: 43, img: "/motyka.webp", uniqueViews: 442 },
+        { name: "Szpadel", sold: 31, img: "/szpadel.jpg", uniqueViews: 131 },
+        { name: "Kilof", sold: 53, img: "/kilof.png", uniqueViews: 221 },
     ];
     const mostCommon = [
-        { name: "Łopata", sold: 33, img: "/spinner.gif", revenue: 32 },
-        { name: "Grabie", sold: 13, img: "/spinner.gif", revenue: 12 },
-        { name: "Motyka", sold: 43, img: "/spinner.gif", revenue: 51 },
-        { name: "Szpadel", sold: 31, img: "/spinner.gif", revenue: 11 },
-        { name: "Kilof", sold: 53, img: "/spinner.gif", revenue: 12 },
+        { name: "Łopata", sold: 33, img: "/łopata.jpg", revenue: 32 },
+        { name: "Grabie", sold: 13, img: "/grabie.webp", revenue: 12 },
+        { name: "Motyka", sold: 43, img: "/motyka.webp", revenue: 51 },
+        { name: "Szpadel", sold: 31, img: "/szpadel.jpg", revenue: 11 },
+        { name: "Kilof", sold: 53, img: "/kilof.png", revenue: 12 },
     ];
     return delayedResponse(() => {
         switch (true) {

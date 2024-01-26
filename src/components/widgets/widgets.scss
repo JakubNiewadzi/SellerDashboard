@@ -1,3 +1,5 @@
+@import './../../styles/colors.scss';
+
 .thumb-container {
     justify-items: center;
     margin-left: auto;
@@ -35,4 +37,10 @@
     height: 220px;
     align-items: center;
     justify-content: center;
+}
+
+.thumbnail {
+    width: 64px;
+    height: 64px;
+    border: 3px $pallette-d solid;
 }

@@ -16,7 +16,7 @@ export const ProductsRankingPane = ({ name, img, subtextTop, subtextTopValue, su
         </ColumnGappedList>
     </ColumnGappedList>;
 
-    const right = <img src={img} />;
+    const right = <img src={img} className="thumbnail align-self-center"/>;
 
     return <RowEdgeWidgetPane left={left} right={right} />;
 }
